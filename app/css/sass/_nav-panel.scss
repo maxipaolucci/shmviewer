@@ -1,0 +1,32 @@
+shm-nav-panel md-toolbar {
+    button.md-button {
+        min-width: 50px;
+        
+        md-icon {
+            height: auto;
+            font-size: 15pt;
+        }
+    }
+    
+    .searchForm { 
+        margin: 0 16px 10px;
+        
+        .search-field-container {
+            
+            input {
+                padding: 0 10px;
+                color: $hover_post_bgcolor;
+                background-color: #fff;
+                font-size: 11pt;
+            }
+            
+            .md-char-counter {
+                display : none;
+            }
+        }
+        
+        .md-button {
+            min-width: 50px;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="shmviewer">
+    <head>
+        <title>SHM Viewer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="css/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="css/angular-material.min.css">
+        
+        <link href="css/main.css?v=17" rel="stylesheet"/>
+        
+    </head>
+    <body ng-controller="mainController as mainCtrl">
+        
+        <shm-nav-panel></shm-nav-panel>
+        
+        <md-content id="app-body-container">
+            <div ui-view> </div>
+        </md-content>
+        
+        <!-- SCRIPTS -->
+        <script src="js/libs/jquery-1.11.3.min.js"></script>
+<!--        <script src="js/libs/jquery-2.1.4.min.js"></script> breaks with ui-router angular is no compatible with this version-->
+        <script src="js/libs/TweenMax.min.js"></script>
+        
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-aria.min.js"></script>
+        <script src="js/libs/angular-animate.min.js"></script>
+        <script src="js/libs/angular-material.min.js" ></script>
+        <script src="js/libs/angular-messages.js"></script>
+        <script src="js/libs/ngFx.min.js"></script>
+        <script src="js/libs/angular-ui-router.min.js"></script>
+        
+        
+        <script src="js/shmApp.js?v=17"></script>
+        <script src="js/services/postsService.js?v=17"></script>
+        <script src="components/post-list/main.js?v=17"></script>
+        <script src="components/nav-panel/main.js?v=17"></script>
+    </body>
+</html>

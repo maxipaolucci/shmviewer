@@ -1,0 +1,71 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <div>
+      
+      
+      Funcionamiento del backend
+      ---------------------------
+      ---------------------------
+      
+      API:
+      ----
+      
+      - [shmviewer host] /services/getNewPostUpdates.json.php?lastId=XXX
+      - [shmviewer host] /services/getNewPosts.json.php?lastVideoId=XXX
+      - [shmviewer host] /services/getPosts.json.php
+      
+      Clases:
+      -------
+
+      * shmParser.php
+
+      Este script puede ejecutar uno de los siguientes metodos:
+
+      -firstPostsLoad()
+
+      Se usa para cargar la base de datos por primera vez
+
+      -reloadPostsFrom()
+
+      Se usa para cargar posts en la base a partir de cierto id de post. Probablemente despues de un borrado de algunos posts 
+      porque se cargaron mal.
+
+      -getLastPosts()
+
+      Se usa para traer posts nuevos de SHM.com a mi base en el servidor. Este metodo lo corre un cron en el server periodicamente para
+      mantener al dia la base.
+
+
+      Este script levanta las siguientes variables:
+
+      GET:
+      
+      -test
+      -home
+      -first
+      -last
+      -from
+      -to
+      -postId
+      -page
+      
+      test is used just for testing a local html to see how the parser work. The page should be named as test*.html
+        and the value of the test var should be the number of test eg: for test3.html then 3
+      home is needed just to parse the homepage
+      first, last, from, to se usan en firstPostsLoad() para indicar si esta la base vacia (first) o si traer las ultimas n paginas (last), o indicar que queremos bajar posts de la pagina "from" hasta "to" 
+
+      postId, page los usa reloadPostsFrom() seguramente despues de un borrado de posts, postId indica el id (id de shm, no mio)
+      del ultimo post que esta bien cargado en mi bd del servidor, y page indica en que pagina encontrar ese post en skatehousemedia.com. Si este param no se especifica, shmparser asume que el post se encuentra en la pagina home (la que tiene los
+      ultimos posts).
+    </div>
+  </body>
+</html>

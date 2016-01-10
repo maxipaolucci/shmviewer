@@ -1,0 +1,30 @@
+
+<md-list class="posts">
+    <md-list-item class="post" ng-class="{active: postlistCtrl.isSelected(post.id)}"
+                  ng-repeat="post in postlistCtrl.posts">
+        <a flex="100" target="_blank" ng-click="postlistCtrl.selectPost(post.id)" href="{{ post.post_type === 'video' ? post.video_url : post.post_url }}">
+            <img ng-if="post.video_thumb_url" class="post-thumbnail" ng-src="{{post.video_thumb_url}}"/>
+            <md-icon ng-if="!post.video_thumb_url && post.post_type === 'video'" md-font-icon="fa-play-circle-o" class="fa post-thumbnail"></md-icon>
+            <md-icon ng-if="!post.video_thumb_url && post.post_type === 'article'" md-font-icon="fa-file-text-o" class="fa post-thumbnail article"></md-icon>
+            <div class="post-title-container">
+                <span class="post-title">{{post.title}}</span>
+                <div class="post-date">
+                    <span class="post-info-value">{{post.posted_on}}</span>
+                </div>
+            </div>
+            <div ng-show="{{post.categories.length}}" class="post-info">
+                <span class="categories-label post-info-label">Posted in:&nbsp;</span>
+                <ul class="categories post-info-values">
+                    <li class="category post-info-value" ng-repeat="category in post.categories">{{category.name + ",&nbsp;"}}</li>
+                </ul>
+            </div>
+            <div ng-show="{{post.tags.length}}" class="post-info">
+                <span class="tags-label post-info-label">Tagged with:&nbsp;</span>
+                <ul class="tags post-info-values">
+                    <li class="tag post-info-value" ng-repeat="tag in post.tags">{{tag.name + ",&nbsp;"}}</li>
+                </ul>
+            </div>
+        </a>
+    </md-list-item>
+    <md-list-item ng-click="postlistCtrl.loadMoreBtnHandler()" class="load-more-posts">Load more posts...</md-list-item>
+</md-list>

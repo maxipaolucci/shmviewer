@@ -1,0 +1,109 @@
+md-list.posts {
+    padding: 0;
+    
+    md-list-item.load-more-posts {
+        cursor: pointer;
+        font-size: 12pt;
+        list-style-type: none;
+        padding: 10px;
+        text-align: center;
+        border-top: 1px solid;
+        
+        button.md-button {
+            background-color: transparent;
+            
+            &:hover {
+                background-color: transparent;
+            }
+            .md-list-item-inner {
+                justify-content: center;
+            }
+        }
+    }
+}
+
+md-list.posts md-list-item.post {
+    list-style-type: none;
+    padding: 10px;
+    
+    &.active {
+        background-color: $active_post_bgcolor;
+        
+        a .post-title {
+            color: $active_font_color;
+        }
+        
+        .post-thumbnail {
+            color: #fff;
+        }
+    }
+    
+    &:hover {
+        background-color: $hover_post_bgcolor;
+        
+        a .post-title {
+            color: $hover_font_color;
+        }
+        
+        .post-thumbnail {
+            color: #fff;
+        }
+    }
+    
+    a {
+        text-decoration: none;
+        height: $post_height;
+        display: block;
+        color: $default_font_color;
+    }
+    
+    .post-thumbnail {
+        width: $post_thumbnail_xs_width;
+        height: $post_thumbnail_xs_height;
+        float: left;
+        margin: 0 10px 5px 0;
+        border-radius: 50%;
+        font-size: 53pt;
+        color: $hover_post_bgcolor;
+        
+        &.article {
+            font-size: 45pt;
+        }
+    }
+    
+    .post-title-container {
+        
+        padding-left: $post_thumbnail_xs_width + 10px;
+        
+        .post-title {
+            font-weight: bold;
+            display: block;
+            color: $hover_post_bgcolor;
+        }
+    
+    }
+    
+    .post-info {
+        
+        clear: both;
+        
+        .post-info-label {
+            float: left;
+            font-weight: bold;
+        }
+        
+        .post-info-values {
+            
+            .post-info-value {
+                float: left;
+                list-style-type: none;
+                
+                &:last-child {
+                    float: none;
+                }
+            }
+        }
+        
+    }
+}
+

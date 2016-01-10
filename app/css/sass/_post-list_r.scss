@@ -1,0 +1,26 @@
+/* Medium devices (tablets, 600px and up) */
+@media (min-width: $screen-md-min) { 
+    
+    md-list.posts md-list-item.post {
+        
+        .post-title-container {    
+            padding-left: $post_thumbnail_width + 10px;
+        }
+        .post-thumbnail {
+            width: $post_thumbnail_width;
+            height: $post_thumbnail_height;
+            font-size: 72pt;
+            
+            &.article {
+                font-size: 60pt;
+            }
+        }
+    }
+}
+
+/* large devices (desktops, 960px and up) */
+@media (min-width: $screen-lg-min) {  }
+
+@media (max-width: $screen-xs-max) {  }
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {  }
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {  }

@@ -1,0 +1,46 @@
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.no-float {
+    float: none;
+}
+
+.hideme {
+    display: none !important;
+}
+
+.showme {
+    display: block !important;
+}
+
+ul {
+    margin: 0;
+}
+
+body {
+    font-family: $default_font_family;
+    font-size: $default_font_size;
+    color: $default_font_color;
+}
+
+md-content#app-body-container {
+    background: -webkit-linear-gradient($bg_color_gradient); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient($bg_color_gradient); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient($bg_color_gradient); /* For Firefox 3.6 to 15 */
+    background: linear-gradient($bg_color_gradient); /* Standard syntax */
+    
+    md-tabs.posts-tabs-container {
+        .md-tab {
+            color: #fff;
+        }
+        
+        .md-tab.md-active {
+            color: rgb(63, 81, 181);
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">
+        <a ng-click="navPanelCtrl.closeSearchForm()" ui-sref="home">{{navPanelCtrl.appTitle}}</a>
+        <!-- fill up the space between left and right area -->
+        <span ng-show="navPanelCtrl.showSeparatorSpan" flex></span>
+        
+        <form flex hide-sm ng-show="navPanelCtrl.showSearchForm" layout="row" class="searchForm" name="searchForm">
+            <md-input-container flex="100" class="search-field-container no-padding">
+                <input class="search-field" name="search" ng-model="searchString" 
+                      ng-keypress="($event.which === 13)?navPanelCtrl.clickHiddenSearchBtn():0" 
+                      md-maxlength="100">
+                <div ng-messages="pepe.search.$error" ng-show="search.$dirty">
+                  <div ng-message="required">This is required!</div>
+                  <div ng-message="md-maxlength">That's too long!</div>
+                  <div ng-message="minlength">That's too short!</div>
+                </div>
+            </md-input-container>
+            <md-button flex aria-label="Search" class="hiddenSearchBtn no-margin hideme" ui-sref="searchResults" ui-sref-opts="{reload: true}">
+                <md-icon md-font-icon="fa-search" class="fa" alt="Search Post"></md-icon>    
+            </md-button>
+        </form>
+        
+        <md-button aria-label="Search post" class="no-margin" ng-click="navPanelCtrl.searchAction()">
+            <md-icon md-font-icon="fa-search" class="fa" alt="Search post"></md-icon>
+        </md-button>
+        <md-button aria-label="Random post" class="no-margin" ng-click="navPanelCtrl.getRandomPost()">
+            <md-icon md-font-icon="fa-cube" class="fa" alt="Random Post"></md-icon>    
+        </md-button>
+    </div>
+    
+    <form hide-gt-sm ng-show="navPanelCtrl.showSearchForm" layout="row" class="searchForm" name="searchForm">
+        <md-input-container flex="100" class="search-field-container no-padding">
+            <input class="search-field" name="search" ng-model="searchString" 
+                  ng-keypress="($event.which === 13)?navPanelCtrl.clickHiddenSearchBtn():0" 
+                  md-maxlength="100">
+            <div ng-messages="pepe.search.$error" ng-show="search.$dirty">
+              <div ng-message="required">This is required!</div>
+              <div ng-message="md-maxlength">That's too long!</div>
+              <div ng-message="minlength">That's too short!</div>
+            </div>
+        </md-input-container>
+        <md-button flex aria-label="Search" class="hiddenSearchBtn no-margin hideme" ui-sref="searchResults" ui-sref-opts="{reload: true}">
+            <md-icon md-font-icon="fa-search" class="fa" alt="Search Post"></md-icon>    
+        </md-button>
+    </form>
+</mdd-toolbar>

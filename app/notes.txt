@@ -1,0 +1,9 @@
+SASS 
+------------
+
+Install manual: http://www.codechewing.com/library/how-to-install-sass-with-compass-on-windows/
+
+1) open "start command prompt with ruby"
+2) go to project css path: cd "C:\workspacew3\shmviewer\app\css"
+3) run compile in css path: compass compile ./ 
+4) automatically compile css after save: compass watch

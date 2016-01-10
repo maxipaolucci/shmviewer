@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">shmviewer</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="post" view="standard">
+<left>4</left>
+<top>58</top>
+<width>265</width>
+<height>260</height>
+<sql_create_table>CREATE TABLE `post` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `post_id` int(10) unsigned NOT NULL,
+  `post_type` varchar(20) NOT NULL DEFAULT 'video',
+  `title` varchar(500) NOT NULL,
+  `post_url` varchar(2000) DEFAULT NULL,
+  `provider` varchar(255) DEFAULT NULL,
+  `video_url` varchar(2000) DEFAULT NULL,
+  `posted_on` varchar(30) DEFAULT NULL,
+  `video_thumb_url` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3200 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="category" view="standard">
+<left>608</left>
+<top>208</top>
+<width>201</width>
+<height>124</height>
+<sql_create_table>CREATE TABLE `category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `link` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=436 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="post_category" view="standard">
+<left>339</left>
+<top>209</top>
+<width>210</width>
+<height>107</height>
+<sql_create_table>CREATE TABLE `post_category` (
+  `post_id` int(10) unsigned NOT NULL,
+  `cat_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`post_id`,`cat_id`),
+  KEY `FK_category_and_post_category` (`cat_id`),
+  CONSTRAINT `FK_category_and_post_category` FOREIGN KEY (`cat_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_post_category_and_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tag" view="standard">
+<left>608</left>
+<top>46</top>
+<width>201</width>
+<height>124</height>
+<sql_create_table>CREATE TABLE `tag` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `link` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3381 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="post_tag" view="standard">
+<left>344</left>
+<top>43</top>
+<width>210</width>
+<height>107</height>
+<sql_create_table>CREATE TABLE `post_tag` (
+  `post_id` int(10) unsigned NOT NULL,
+  `tag_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`post_id`,`tag_id`),
+  KEY `FK_post_tag_and_tag` (`tag_id`),
+  CONSTRAINT `FK_post_tag_and_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_post_tag_and_tag` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="post_update" view="colnames">
+<left>327</left>
+<top>355</top>
+<width>150</width>
+<height>95</height>
+<sql_create_table>CREATE TABLE `post_update` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `post_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

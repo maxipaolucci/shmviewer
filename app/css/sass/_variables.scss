@@ -1,0 +1,23 @@
+// GRID SYSTEM VARIABLES
+$screen-xs-max: 399px; //not supported by angular material
+$screen-sm-min: 400px; //not supported by angular material
+$screen-sm-max: 599px; //angular material
+$screen-md-min: 600px; //angular material
+$screen-md-max: 959px; //angular material
+$screen-lg-min: 960px; //angular material
+
+$default_font_family: Arial;
+$default_font_color: #fff;
+$default_font_size: 9pt;
+$hover_font_color: #000;
+$active_font_color: #000;
+$hover_post_bgcolor : #FF007D;
+$active_post_bgcolor : #ea4e93;
+
+$post_height: 100%;
+$post_thumbnail_height: 90px;
+$post_thumbnail_width: 90px;
+$post_thumbnail_xs_height: 63px;
+$post_thumbnail_xs_width: 63px;
+
+$bg_color_gradient: black,gray;

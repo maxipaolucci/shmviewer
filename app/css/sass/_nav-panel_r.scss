@@ -1,0 +1,18 @@
+/* Medium devices (tablets, 600px and up) */
+@media (min-width: $screen-md-min) { 
+    
+    shm-nav-panel md-toolbar {
+
+        .searchForm { 
+            margin: 0 0 0 120px;
+        }
+    }
+}
+
+/* large devices (desktops, 960px and up) */
+@media (min-width: $screen-lg-min) {  }
+
+
+@media (max-width: $screen-xs-max) {  }
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {  }
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {  }
