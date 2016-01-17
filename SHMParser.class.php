@@ -20,10 +20,10 @@ class SHMParser {
   private static $SHM_TEST_PAGE_URL = 'http://shmviewer.localhost/test_pages/';
   
   //PARSER SELECTORS
-  private static $POSTS_SELECTOR = 'div[id^=post-]';
-  private static $POST_TITLE_SELECTOR = 'h2[class=entry-title] a'; 
-  private static $POST_POSTED_ON_SELECTOR = 'div[class=entry-meta] span[class=entry-date]'; 
-  private static $POST_VIDEO_URL_SELECTOR = 'div[class=entry-content] p iframe'; 
+  private static $POSTS_SELECTOR = 'section[class=mk-blog-container] article';
+  private static $POST_TITLE_SELECTOR = 'div[class=mk-blog-meta] h3[class=the-title] a'; 
+  private static $POST_POSTED_ON_SELECTOR = 'div[class=mk-blog-meta] div[class=mk-blog-meta-wrapper] time a'; 
+  private static $POST_VIDEO_URL_SELECTOR = 'div[class=mk-video-wrapper] iframe'; 
   private static $POST_VIDEO_URL_2_SELECTOR = 'div[class=entry-content] p object param[name=src]';
   private static $POST_VIDEO_URL_3_SELECTOR = 'div[class=entry-content] p object param[name=movie]';
   private static $POST_VIDEO_URL_4_SELECTOR = 'div[class=entry-content] p object embed';
