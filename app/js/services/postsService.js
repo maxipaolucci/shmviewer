@@ -6,8 +6,10 @@
         
         this.getPosts = function(postType, pageNum, pageSize) {
             var deferred = $q.defer();
-            $http.get(appConfig.servicesServer + '/services/getPosts.json.php?type=' + 
-                    postType + '&page_num=' + pageNum + '&page_size=' + pageSize)
+            var url = appConfig.servicesServer + '/services/getPosts.json.php?type=' + 
+                    postType + '&page_num=' + pageNum + '&page_size=' + pageSize;
+            url = '/js/services/mocks/videos.json';
+            $http.get(url)
                 .success(function(data){
                     deferred.resolve(data);
                 }).error(function(){

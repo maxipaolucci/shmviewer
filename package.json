@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxipaolucci/shmviewer.git"
+    "url": "git+https://github.com/maxipaolucci/shmviewer.git"
   },
   "author": "Maxi Paolucci",
   "license": "ISC",
@@ -21,6 +21,10 @@
     "gulp": "^3.9.0",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-inject": "^3.0.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-serve": "^1.2.0",
+    "inject": "^1.0.0-beta2",
+    "jshint": "^2.9.1",
     "run-sequence": "^1.1.5"
   },
   "dependencies": {

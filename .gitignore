@@ -1,3 +1,5 @@
+#ignore netbeans project folder
+./nbproject/private/private.xml
 
 #ignore node modules
 node_modules
