@@ -1,50 +1,48 @@
-angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', function($log){
+angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', function(){
+        var componentName = 'post-list component - shmPostList directive: ';
+        
         return {
             restrict : 'E',
             templateUrl : './components/post-list/post-list.html',
             scope: { posttype: '@' },
-            controller : ['$http', '$scope', 'Post', function($http, $scope, Post){
-                var main = this;
-                var pageSize = 30;
+            controller : function($scope, $log, Post){
+                var selectedPostId = null;
+                var lastPostsPageLoaded = 0;
                 
-                this.selectedPostId = null;
-                this.lastPostsPageLoaded = 0;
-                this.posts = [];
-                this.appConfig = $scope.$parent.appConfig;
-                
+                $scope.posts = [];
                 
                 /**
                  * Answer whether the post as param is selected or not
                  * @param {int} postId - The id of the post that wanna ask for
                  * @return {boolean} - True if the post as param is selected or not in the view
                  * */
-                this.isSelected = function(postId) {
-                    return this.selectedPostId === postId;
+                $scope.isSelected = function(postId) {
+                    return selectedPostId === postId;
                 };
                 
                 /**
                  * Set the post as selected
                  * @param {int} postId - the post that the user want to select
                  */
-                this.selectPost = function(postId) {
-                    this.selectedPostId = postId;
+                $scope.selectPost = function(postId) {
+                    selectedPostId = postId;
                 };
                 
                 /**
                  * Get more posts from the server and append it to the array of posts
                  * @param {int} pageNum . Number of page to get posts
                  */
-                this.loadMorePosts = function(pageNum) {
+                var loadMorePosts = function(pageNum) {
                     pageNum = !pageNum ? 0 : pageNum;
                     
                     if ($scope.posttype === 'search') {
-                        this.searchPosts(pageNum);
+                        searchPosts(pageNum);
                     } else {
                         Post.getPosts($scope.posttype, pageNum).then(function(data) {
                             if (data.posts) {
-                                main.posts = main.posts.concat(data.posts.slice(0, Post.getPageSize()));
+                                $scope.posts = $scope.posts.concat(data.posts.slice(0, Post.getPageSize()));
                             } else {
-                                $log.log('Cant retrive the data');
+                                $log.log(componentName + '(loadMorePosts()) Cannot retrive the posts data');
                             }
                         }, function (data) {
                             $log.log(data);
@@ -52,14 +50,14 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
                     }
                 };
                 
-                this.searchPosts = function (pageNum) {
+                var searchPosts = function (pageNum) {
                     pageNum = !pageNum ? 0 : pageNum;
                     //lets use -1 to tell the server that we want a random post
                     Post.searchPosts($scope.$parent.searchString, pageNum).then(function(data) {
                         if (data) {
-                            main.posts = main.posts.concat(data.posts.slice(0, Post.getPageSize()));
+                            $scope.posts = $scope.posts.concat(data.posts.slice(0, Post.getPageSize()));
                         } else {
-                            $log.log('Cant retrive the data');
+                            $log.log(componentName + '(searchPosts()) Cannot retrive the data');
                         }
                     }, function (data) {
                         $log.log(data);
@@ -70,20 +68,20 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
                  * Manage the click event of the user in the "Load more posts" button at the end
                  * of the posts list
                  */
-                this.loadMoreBtnHandler = function () {
-                    this.lastPostsPageLoaded += 1;
-                    this.loadMorePosts(this.lastPostsPageLoaded);
+                $scope.loadMoreBtnHandler = function () {
+                    lastPostsPageLoaded += 1;
+                    loadMorePosts(lastPostsPageLoaded);
                 };
                 
                 /**
                  * Initialize the controller logic
                  */
-                this.initialize = function () {
-                    this.loadMorePosts(this.lastPostsPageLoaded);
+                var initialize = function () {
+                    loadMorePosts(lastPostsPageLoaded);
                 };
                 
-                this.initialize();
-            }],
+                initialize();
+            },
             controllerAs : 'postlistCtrl'
         };
     });
