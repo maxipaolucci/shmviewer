@@ -1,10 +1,9 @@
-angular.module('nav-panel', ['ngMessages','posts-service'])
-    .directive('shmNavPanel', function(){
+angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
         return {
             restrict : 'E',
             templateUrl : './components/nav-panel/nav-panel.html',
-            controller : ['$log','$window', '$scope', 'postsService',
-                function($log, $window, $scope, postsService){
+            controller : ['$log','$window', '$scope', 'Post',
+                function($log, $window, $scope, Post){
                 
                     this.appConfig = $scope.appConfig;
                     this.appTitle = this.appConfig.appTitle;
@@ -21,7 +20,7 @@ angular.module('nav-panel', ['ngMessages','posts-service'])
 
                     this.getRandomPost = function () {
                         //lets use -1 to tell the server that we want a random post
-                        postsService.getPostById(-1).then(function(data) {
+                        Post.getPostById(-1).then(function(data) {
                             if (data.post) {
                                 $window.open(data.post.post_url);
                             } else {

@@ -28,20 +28,6 @@ angular.module('shmviewer', ['ui.router', 'ngMaterial', 'nav-panel', 'post-list'
         //servicesServer : 'http://www.iprsportingclub.com.ar/shmviewer'
         servicesServer : 'http://shmviewer.localhost'
     })
-    .config(function($provide, $stateProvider, $urlRouterProvider) {
-
-        $urlRouterProvider.otherwise('/home');
-
-        $stateProvider
-            // HOME STATES AND NESTED VIEWS ========================================
-            .state('home', {
-                url: '/home',
-                templateUrl: 'views/home.html'
-            })
-
-            // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-            .state('searchResults', {
-                url: '/search',
-                templateUrl: 'views/search-results.html'
-            });
+    .config(function(PostProvider) {
+        PostProvider.setPageSize(30);
     });

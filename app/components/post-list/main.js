@@ -1,10 +1,9 @@
-angular.module('post-list', ['ngFx', 'ngAnimate','posts-service'])
-    .directive('shmPostList', function($log){
+angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', function($log){
         return {
             restrict : 'E',
             templateUrl : './components/post-list/post-list.html',
             scope: { posttype: '@' },
-            controller : ['$http', '$scope', 'postsService', function($http, $scope, postsService){
+            controller : ['$http', '$scope', 'Post', function($http, $scope, Post){
                 var main = this;
                 var pageSize = 30;
                 
@@ -41,9 +40,9 @@ angular.module('post-list', ['ngFx', 'ngAnimate','posts-service'])
                     if ($scope.posttype === 'search') {
                         this.searchPosts(pageNum);
                     } else {
-                        postsService.getPosts($scope.posttype, pageNum, pageSize).then(function(data) {
+                        Post.getPosts($scope.posttype, pageNum).then(function(data) {
                             if (data.posts) {
-                                main.posts = main.posts.concat(data.posts.slice(0, pageSize));
+                                main.posts = main.posts.concat(data.posts.slice(0, Post.getPageSize()));
                             } else {
                                 $log.log('Cant retrive the data');
                             }
@@ -56,9 +55,9 @@ angular.module('post-list', ['ngFx', 'ngAnimate','posts-service'])
                 this.searchPosts = function (pageNum) {
                     pageNum = !pageNum ? 0 : pageNum;
                     //lets use -1 to tell the server that we want a random post
-                    postsService.searchPosts($scope.$parent.searchString, pageNum, pageSize).then(function(data) {
+                    Post.searchPosts($scope.$parent.searchString, pageNum).then(function(data) {
                         if (data) {
-                            main.posts = main.posts.concat(data.posts.slice(0, pageSize));
+                            main.posts = main.posts.concat(data.posts.slice(0, Post.getPageSize()));
                         } else {
                             $log.log('Cant retrive the data');
                         }
