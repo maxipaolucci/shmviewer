@@ -8,7 +8,7 @@
             var deferred = $q.defer();
             var url = appConfig.servicesServer + '/services/getPosts.json.php?type=' + 
                     postType + '&page_num=' + pageNum + '&page_size=' + pageSize;
-            url = '/js/services/mocks/videos.json';
+            //url = '/js/services/mocks/videos.json';
             $http.get(url)
                 .success(function(data){
                     deferred.resolve(data);
