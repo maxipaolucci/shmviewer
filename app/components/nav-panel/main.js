@@ -1,7 +1,5 @@
-(function(){
-    var app = angular.module('nav-panel', ['ngMessages','posts-service']);
-
-    app.directive('shmNavPanel', function(){
+angular.module('nav-panel', ['ngMessages','posts-service'])
+    .directive('shmNavPanel', function(){
         return {
             restrict : 'E',
             templateUrl : './components/nav-panel/nav-panel.html',
@@ -63,4 +61,3 @@
             controllerAs : 'navPanelCtrl'
         };
     });
-})();

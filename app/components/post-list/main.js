@@ -1,7 +1,5 @@
-(function(){
-    var app = angular.module('post-list', ['ngFx', 'ngAnimate','posts-service']);
-
-    app.directive('shmPostList', function($log){
+angular.module('post-list', ['ngFx', 'ngAnimate','posts-service'])
+    .directive('shmPostList', function($log){
         return {
             restrict : 'E',
             templateUrl : './components/post-list/post-list.html',
@@ -90,4 +88,3 @@
             controllerAs : 'postlistCtrl'
         };
     });
-})();

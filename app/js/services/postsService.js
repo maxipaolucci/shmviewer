@@ -1,7 +1,5 @@
-(function() {
-    var app = angular.module('posts-service', []);
-    
-    app.service('postsService', ['$http', '$q', 'appConfig', 
+angular.module('posts-service', [])
+    .service('postsService', ['$http', '$q', 'appConfig', 
             function($http, $q, appConfig) {
         
         this.getPosts = function(postType, pageNum, pageSize) {
@@ -41,7 +39,3 @@
             return deferred.promise;
         };
     }]);
-    
-})();
-
-

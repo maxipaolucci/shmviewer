@@ -1,7 +1,5 @@
-(function() {
-    var app = angular.module('shmviewer', ['ui.router', 'ngMaterial', 'nav-panel', 'post-list']);
-    
-    app.controller('mainController', ['$scope', 'appConfig', function($scope, $appConfig){
+angular.module('shmviewer', ['ui.router', 'ngMaterial', 'nav-panel', 'post-list'])
+    .controller('mainController', ['$scope', 'appConfig', function($scope, $appConfig){
         $scope.appConfig = $appConfig;
         
         /**
@@ -20,9 +18,8 @@
         };
 
        this.initialize();
-    }]);
-    
-    app.constant('appConfig', {
+    }])
+    .constant('appConfig', {
         appTitle: 'SHM Viewer',
         screenSMmax : 599,
         screenMDmin : 600,
@@ -30,9 +27,8 @@
         screenLGmin : 960,
         //servicesServer : 'http://www.iprsportingclub.com.ar/shmviewer'
         servicesServer : 'http://shmviewer.localhost'
-    });
-
-    app.config(function($provide, $stateProvider, $urlRouterProvider) {
+    })
+    .config(function($provide, $stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/home');
 
@@ -49,4 +45,3 @@
                 templateUrl: 'views/search-results.html'
             });
     });
-})();
