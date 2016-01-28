@@ -1,10 +1,11 @@
 var gulp = require('gulp'),
-    runSequence = require('run-sequence'),
-    del = require('del'),
-    inject = require('gulp-inject'),
-    angularFileSort = require('gulp-angular-filesort'),
-    serve = require('gulp-serve');
-    jshint = require('gulp-jshint');
+    runSequence = require('run-sequence'), //for run task in order and not in parallel
+    del = require('del'), //for remove files or directories
+    inject = require('gulp-inject'), //for do injection into a file of some resources
+    angularFileSort = require('gulp-angular-filesort'), //for order angular resourses when injected in html
+    serve = require('gulp-serve'), //for start a server on a specified path
+    jshint = require('gulp-jshint'), //for js hint
+    sass = require('gulp-sass'); //for compile sass
 
 var config = require('./gulp/gulp.config.js');
 
@@ -22,20 +23,21 @@ gulp.task('ang-serve', serve(config.build_dir));
  * First deletes the current build and then generates a new one
  */
 gulp.task('ang-build', function(callback) {
-    runSequence('ang-clean-build', 'ang-copy-build', callback);
+    runSequence('ang-clean-build', 'ang-sass', 'ang-copy-build', callback);
 });
 
 /**
  * Deletes the current angular build
  */
 gulp.task('ang-clean-build', function() {
-    return del(['./app/build'], {force: true});
+    return del([config.build_dir], {force: true});
 });
 
 /**
  * Inject all the js resources into index.html and copy it into the build directory
  */
 gulp.task('ang-inject-index', function() {
+    
     var tplSrc = ['./app/build/js/libs/*.js', './app/build/js/shmApp.js', './app/build/js/services/*.js', 
         './app/build/components/**/*.js'];
     return gulp.src('./app/index.html')
@@ -54,7 +56,7 @@ gulp.task('ang-copy-build', ['ang-copy-components', 'ang-copy-js', 'ang-copy-vie
  * Copy angular components into build dir
  */
 gulp.task('ang-copy-components', function() {
-    return gulp.src('./app/components/**/*.*').pipe(gulp.dest('./app/build/components'));
+    return gulp.src(config.ang_files.components_all).pipe(gulp.dest('./app/build/components'));
 });
 
 /**
@@ -91,12 +93,23 @@ gulp.task('ang-copy-extrafiles', function() {
  * Checks the sintax of the app js files (not in build)
  */
 gulp.task('ang-lint', function() {
-    return gulp.src(config.app_files.js).pipe(jshint()).pipe(jshint.reporter('default'));
+    return gulp.src(config.ang_files.src_js).pipe(jshint()).pipe(jshint.reporter('default'));
 });
 
 /**
  * starts a watcher looking for any changes in the app js files
  */
 gulp.task('ang-watch', function() {
-    gulp.watch(config.app_files.js, ['ang-lint', 'ang-build']);
+    gulp.watch(config.ang_files.src_sass, ['ang-build']);
+    gulp.watch(config.ang_files.src_js, ['ang-lint', 'ang-build']);
+});
+
+
+/**
+ * compile all sass resources into css ones.
+ */
+gulp.task('ang-sass', function () {
+  return gulp.src(config.ang_files.src_sass)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./app/css'));
 });

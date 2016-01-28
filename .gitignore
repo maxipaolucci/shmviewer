@@ -1,8 +1,11 @@
 #ignore netbeans project folder
-./nbproject/private/private.xml
+nbproject/private/private.xml
 
 #ignore node modules
 node_modules
 
 #ignore the build directory because is automatically generated
-/app/build
+app/build
+
+#ignore compiled css files
+app/css/*.css
