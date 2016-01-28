@@ -9,8 +9,18 @@ var gulp = require('gulp'),
 
 var config = require('./gulp/gulp.config.js');
 
+/**
+ * Default task when just type gulp. Makes the build, starts watchers and start the server on localhost:3000
+ */
 gulp.task('default', function(callback) {
     runSequence('ang-build', 'ang-watch', 'ang-serve', callback);
+});
+
+/**
+ * Like default but without starting a server. Makes the build and starts watchers
+ */
+gulp.task('shmv', function(callback) {
+    runSequence('ang-build', 'ang-watch', callback);
 });
 
 /**
@@ -110,6 +120,11 @@ gulp.task('ang-watch', function() {
  */
 gulp.task('ang-sass', function () {
   return gulp.src(config.ang_files.src_sass)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./app/css'));
+    .pipe(sass({
+        style: 'compressed',
+        errLogToConsole: false,
+        onError: function(err) {
+            return notify().write(err);
+        }
+    })).pipe(gulp.dest('./app/css'));
 });
