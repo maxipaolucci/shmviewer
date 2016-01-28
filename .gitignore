@@ -1,3 +1,6 @@
+#ignore logs
+*.log
+
 #ignore netbeans project folder
 nbproject/private/private.xml
 
