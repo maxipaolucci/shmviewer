@@ -5,7 +5,7 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
             restrict : 'E',
             templateUrl : './components/post-list/post-list.html',
             scope: { posttype: '@' },
-            controller : function($scope, $log, Post, SearchPost){
+            controller : function($scope, $log, AppSettings, Post, SearchPost){
                 var selectedPostId = null;
                 var lastPostsPageLoaded = 0;
                 
@@ -40,7 +40,7 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
                     } else {
                         Post.getPosts($scope.posttype, pageNum).then(function(data) {
                             if (data.posts) {
-                                $scope.posts = $scope.posts.concat(data.posts.slice(0, Post.getPageSize()));
+                                $scope.posts = $scope.posts.concat(data.posts.slice(0, AppSettings.listPageSizes.posts));
                             } else {
                                 $log.log(componentName + '(loadMorePosts()) Cannot retrive the posts data');
                             }
@@ -55,7 +55,7 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
                     
                     Post.searchPosts(SearchPost.getSearchString(), pageNum).then(function(data) {
                         if (data) {
-                            $scope.posts = $scope.posts.concat(data.posts.slice(0, Post.getPageSize()));
+                            $scope.posts = $scope.posts.concat(data.posts.slice(0, AppSettings.listPageSizes.posts));
                         } else {
                             $log.log(componentName + '(searchPosts()) Cannot retrive the data');
                         }

@@ -1,18 +1,7 @@
 angular.module('shmviewer').provider('Post', function PostProvider() {
-    //configuration value to the the size of the pages when post are returned from the server
-    var pageSize = 30;
-    
-    //this is a configuration method to set the page size for posts pagination
-    this.setPageSize = function (newPageSize) {
-        pageSize = newPageSize;
-    };
     
     this.$get = function ($http, $q, AppSettings) {
         return {
-            getPageSize : function () {
-                return pageSize;
-            },
-            
             /**
              * Get a list of posts
              * @param {string} postType . The type of post to load: article, video, all
@@ -21,8 +10,8 @@ angular.module('shmviewer').provider('Post', function PostProvider() {
              */
             getPosts : function(postType, pageNum) {
                 var deferred = $q.defer();
-                var url = AppSettings.servicesServer + '/services/getPosts.json.php?type=' + 
-                        postType + '&page_num=' + pageNum + '&page_size=' + pageSize;
+                var url = AppSettings.urls.servicesServer + '/services/getPosts.json.php?type=' + 
+                        postType + '&page_num=' + pageNum + '&page_size=' + AppSettings.listPageSizes.posts;
                 //url = '/js/services/mocks/videos.json';
                 $http.get(url)
                     .success(function(data){
@@ -40,11 +29,11 @@ angular.module('shmviewer').provider('Post', function PostProvider() {
              */
             getPostById : function(postId) {
                 var deferred = $q.defer();
-                $http.get(AppSettings.servicesServer + '/services/getPostById.json.php?id=' + postId )
+                $http.get(AppSettings.urls.servicesServer + '/services/getPostById.json.php?id=' + postId )
                     .success(function(data){
                         deferred.resolve(data);
                     }).error(function(){
-                        deferred.reject('There was an error trying to retrieve post by ID: ' + postid);
+                        deferred.reject('There was an error trying to retrieve post by ID: ' + postId);
                     });
                 return deferred.promise;
             },
@@ -57,8 +46,8 @@ angular.module('shmviewer').provider('Post', function PostProvider() {
              */
             searchPosts : function(searchString, pageNum) {
                 var deferred = $q.defer();
-                $http.get(AppSettings.servicesServer + '/services/searchPosts.json.php?by=' + searchString +
-                        '&page_num=' + pageNum + '&page_size=' + pageSize)
+                $http.get(AppSettings.urls.servicesServer + '/services/searchPosts.json.php?by=' + searchString +
+                        '&page_num=' + pageNum + '&page_size=' + AppSettings.listPageSizes.posts)
                     .success(function(data){
                         deferred.resolve(data);
                     }).error(function(){
