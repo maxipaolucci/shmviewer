@@ -5,7 +5,7 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
             restrict : 'E',
             templateUrl : './components/post-list/post-list.html',
             scope: { posttype: '@' },
-            controller : function($scope, $log, Post){
+            controller : function($scope, $log, Post, SearchPost){
                 var selectedPostId = null;
                 var lastPostsPageLoaded = 0;
                 
@@ -52,8 +52,8 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
                 
                 var searchPosts = function (pageNum) {
                     pageNum = !pageNum ? 0 : pageNum;
-                    //lets use -1 to tell the server that we want a random post
-                    Post.searchPosts($scope.$parent.searchString, pageNum).then(function(data) {
+                    
+                    Post.searchPosts(SearchPost.getSearchString(), pageNum).then(function(data) {
                         if (data) {
                             $scope.posts = $scope.posts.concat(data.posts.slice(0, Post.getPageSize()));
                         } else {

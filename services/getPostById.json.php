@@ -1,5 +1,8 @@
 <?php
-// THIS SERVICE RETRIVE ALL THE POST FROM THE POST TABLE
+// THIS SERVICE RETRIVE A POST BY ID FROM THE POST TABLE
+/*
+ * If the id is -1 then get a random post
+ */
 
 $path = '..';
 include("$path/includes/ErrorHandler.class.php");

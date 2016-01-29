@@ -1,62 +1,70 @@
 angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
-        return {
-            restrict : 'E',
-            templateUrl : './components/nav-panel/nav-panel.html',
-            controller : ['$log','$window', '$scope', 'Post',
-                function($log, $window, $scope, Post){
-                
-                    this.appConfig = $scope.appConfig;
-                    this.appTitle = this.appConfig.appTitle;
-                    this.showSearchForm = false;
-                    this.showSeparatorSpan = true;
-                    $scope.searchString = "";
+    var componentName = 'nav-panel component - shmNavPanel directive: ';
+    
+    return {
+        restrict : 'E',
+        scope: true,
+        templateUrl : './components/nav-panel/nav-panel.html',
+        controller : function($log, $window, $scope, $state, Post, SearchPost){
+            $scope.appTitle = $scope.appConfig.appTitle;
+            $scope.showSearchForm = false;
+            $scope.showSeparatorSpan = true;
+            $scope.searchString = "";
+            
+            /**
+             * Closes the search input form in the navbar
+             */
+            $scope.closeSearchForm = function () {
+                $scope.showSearchForm = false;
+                $scope.showSeparatorSpan = true;
+                $('.searchForm .search-field').val('');
+            };
+            
+            /**
+             * Get a random post from the server.
+             */
+            $scope.randomPostAction = function () {
+                //lets use -1 to tell the server that we want a random post
+                Post.getPostById(-1).then(function(data) {
+                    if (data.post) {
+                        $window.open(data.post.post_url);
+                    } else {
+                        $log.log(componentName + '(getRandomPost()) Cannot retrive the post data');
+                    }   
+                }, function (data) {
+                    $log.log(data);
+                });
+            };
+            
+            /**
+             * Executes the search action
+             * @returns {undefined}
+             */
+            $scope.searchAction = function () {
+                if (!$scope.showSearchForm) {
+                    $scope.showSearchForm = true;
+                    if ($(window).width() > $scope.appConfig.screenSMmax) {
+                        $scope.showSeparatorSpan = false;
+                    }
+                    $('.searchForm .search-field-container').addClass('md-input-focused');
+                    $('.searchForm .search-field').focus();
+                } else if($scope.searchString) {
+                    if ($state.is('searchResults') && SearchPost.getSearchString() === $scope.searchString) {
+                        //do nothing, the user is performing the same search again
+                    } else {
+                        //the user performed a different search so go ahead
+                        SearchPost.setSearchString($scope.searchString);
+                        $state.go('searchResults', {}, {reload: true}); //second parameter is for $stateParams
+                    }
+                }
+            };
 
-                    /**
-                     * Initialize the controller logic
-                     */
-                    this.initialize = function () {
-
-                    };
-
-                    this.getRandomPost = function () {
-                        //lets use -1 to tell the server that we want a random post
-                        Post.getPostById(-1).then(function(data) {
-                            if (data.post) {
-                                $window.open(data.post.post_url);
-                            } else {
-                                $log.log('Cant retrive the data');
-                            }   
-                        }, function (data) {
-                            $log.log(data);
-                        });
-                    };
-                    
-                    this.clickHiddenSearchBtn = function () {
-                        $('.searchForm .hiddenSearchBtn').click();
-                    };
-                    
-                    this.closeSearchForm = function () {
-                        this.showSearchForm = false;
-                        this.showSeparatorSpan = true;
-                        $('.searchForm .search-field').val('');
-                    };
-                    
-                    this.searchAction = function () {
-                        if (!this.showSearchForm) {
-                            this.showSearchForm = true;
-                            if ($(window).width() > this.appConfig.screenSMmax) {
-                                this.showSeparatorSpan = false;
-                            }
-                            $('.searchForm .search-field-container').addClass('md-input-focused');
-                            $('.searchForm .search-field').focus();
-                        } else if($scope.searchString) {
-                            this.clickHiddenSearchBtn();
-                        }
-                    };
-                    
-                    
-                    this.initialize();
-            }],
-            controllerAs : 'navPanelCtrl'
-        };
-    });
+            /**
+             * Initialize the controller logic
+             */
+            var initialize = function () {};
+            initialize();
+        },
+        controllerAs : 'navPanelCtrl'
+    };
+});
