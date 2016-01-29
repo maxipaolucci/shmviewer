@@ -7,7 +7,7 @@ angular.module('shmviewer').provider('Post', function PostProvider() {
         pageSize = newPageSize;
     };
     
-    this.$get = function ($http, $q, appConfig) {
+    this.$get = function ($http, $q, AppSettings) {
         return {
             getPageSize : function () {
                 return pageSize;
@@ -21,7 +21,7 @@ angular.module('shmviewer').provider('Post', function PostProvider() {
              */
             getPosts : function(postType, pageNum) {
                 var deferred = $q.defer();
-                var url = appConfig.servicesServer + '/services/getPosts.json.php?type=' + 
+                var url = AppSettings.servicesServer + '/services/getPosts.json.php?type=' + 
                         postType + '&page_num=' + pageNum + '&page_size=' + pageSize;
                 //url = '/js/services/mocks/videos.json';
                 $http.get(url)
@@ -40,7 +40,7 @@ angular.module('shmviewer').provider('Post', function PostProvider() {
              */
             getPostById : function(postId) {
                 var deferred = $q.defer();
-                $http.get(appConfig.servicesServer + '/services/getPostById.json.php?id=' + postId )
+                $http.get(AppSettings.servicesServer + '/services/getPostById.json.php?id=' + postId )
                     .success(function(data){
                         deferred.resolve(data);
                     }).error(function(){
@@ -57,7 +57,7 @@ angular.module('shmviewer').provider('Post', function PostProvider() {
              */
             searchPosts : function(searchString, pageNum) {
                 var deferred = $q.defer();
-                $http.get(appConfig.servicesServer + '/services/searchPosts.json.php?by=' + searchString +
+                $http.get(AppSettings.servicesServer + '/services/searchPosts.json.php?by=' + searchString +
                         '&page_num=' + pageNum + '&page_size=' + pageSize)
                     .success(function(data){
                         deferred.resolve(data);

@@ -5,8 +5,8 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
         restrict : 'E',
         scope: true,
         templateUrl : './components/nav-panel/nav-panel.html',
-        controller : function($log, $window, $scope, $state, Post, SearchPost){
-            $scope.appTitle = $scope.appConfig.appTitle;
+        controller : function($log, $window, $scope, $state, AppSettings, Post, SearchPost){
+            $scope.appTitle = AppSettings.appTitle;
             $scope.showSearchForm = false;
             $scope.showSeparatorSpan = true;
             $scope.searchString = "";
@@ -43,7 +43,7 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
             $scope.searchAction = function () {
                 if (!$scope.showSearchForm) {
                     $scope.showSearchForm = true;
-                    if ($(window).width() > $scope.appConfig.screenSMmax) {
+                    if ($(window).width() > AppSettings.screenSMmax) {
                         $scope.showSeparatorSpan = false;
                     }
                     $('.searchForm .search-field-container').addClass('md-input-focused');

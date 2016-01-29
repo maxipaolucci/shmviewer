@@ -1,11 +1,9 @@
 angular.module('shmviewer', ['ui.router', 'ngMaterial', 'nav-panel', 'post-list'])
-    .controller('mainController', ['$scope', 'appConfig', function($scope, $appConfig){
-        $scope.appConfig = $appConfig;
-        
+    .controller('mainController', function(){
         /**
          * set the height of the main body container based on the window height - the toolbar height
          */
-        this.adjustAppBodyHeight = function() {
+        var adjustAppBodyHeight = function() {
             var bodyContainerHeight = $(window).height() - 64;//64 height of the toolbar (fixed value)
             $('#app-body-container').height(bodyContainerHeight);
         };
@@ -13,20 +11,10 @@ angular.module('shmviewer', ['ui.router', 'ngMaterial', 'nav-panel', 'post-list'
         /**
          * Initialize the controller logic
          */
-        this.initialize = function () {
-            this.adjustAppBodyHeight();
+        var initialize = function () {
+            adjustAppBodyHeight();
         };
-
-       this.initialize();
-    }])
-    .constant('appConfig', {
-        appTitle: 'SHM Viewer',
-        screenSMmax : 599,
-        screenMDmin : 600,
-        screenMDmax : 959,
-        screenLGmin : 960,
-        //servicesServer : 'http://www.iprsportingclub.com.ar/shmviewer'
-        servicesServer : 'http://shmviewer.localhost'
+        initialize();
     })
     .config(function(PostProvider) {
         PostProvider.setPageSize(30);
