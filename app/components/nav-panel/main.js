@@ -49,12 +49,12 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
                     $('.searchForm .search-field-container').addClass('md-input-focused');
                     $('.searchForm .search-field').focus();
                 } else if($scope.searchString) {
-                    if ($state.is('searchResults') && SearchPost.getSearchString() === $scope.searchString) {
+                    if ($state.is('search') && SearchPost.getSearchString() === $scope.searchString) {
                         //do nothing, the user is performing the same search again
                     } else {
                         //the user performed a different search so go ahead
                         SearchPost.setSearchString($scope.searchString);
-                        $state.go('searchResults', {}, {reload: true}); //second parameter is for $stateParams
+                        $state.go('search', {}, {reload: true}); //second parameter is for $stateParams
                     }
                 }
             };

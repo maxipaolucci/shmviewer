@@ -1,17 +1,12 @@
-angular.module('shmviewer').config(function($provide, $stateProvider, $urlRouterProvider) {
-    
+angular.module('shmviewer').config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
 
-    $stateProvider
-        // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
-            url: '/home',
-            templateUrl: 'views/home.html'
-        })
-
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('searchResults', {
-            url: '/search',
-            templateUrl: 'views/search-results.html'
-        });
+    $stateProvider.state('home', {
+        url: '/home',
+        templateUrl: 'views/home.html'
+    })
+    .state('search', {
+        url: '/search',
+        templateUrl: 'views/search-results.html'
+    });
 });
