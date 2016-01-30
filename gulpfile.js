@@ -111,6 +111,7 @@ gulp.task('ang-lint', function() {
  */
 gulp.task('ang-watch', function() {
     gulp.watch(config.ang_files.src_sass, ['ang-build']);
+    gulp.watch(config.ang_files.src_html, ['ang-build']);
     gulp.watch(config.ang_files.src_js, ['ang-lint', 'ang-build']);
 });
 
