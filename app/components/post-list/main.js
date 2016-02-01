@@ -9,6 +9,7 @@ angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', func
                 var selectedPostId = null;
                 var lastPostsPageLoaded = 0;
                 
+                $scope.postsPageSize = AppSettings.listPageSizes.posts;
                 $scope.posts = [];
                 
                 /**

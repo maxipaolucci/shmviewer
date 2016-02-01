@@ -25,5 +25,6 @@
             </div>
         </a>
     </md-list-item>
-    <md-list-item ng-click="loadMoreBtnHandler()" class="load-more-posts">Load more posts...</md-list-item>
+    <md-list-item ng-if="posts.length === postsPageSize" ng-click="loadMoreBtnHandler()" class="load-more-posts">Load more posts...</md-list-item>
+    <md-list-item ng-if="posts.length < postsPageSize" class="load-more-posts"><span>Not more posts available.</span></md-list-item>
 </md-list>
