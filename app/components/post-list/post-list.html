@@ -1,5 +1,5 @@
 <md-list class="posts">
-    <md-list-item class="post" ng-class="{active: isSelected(post.id)}"
+    <md-list-item flex="100" class="post" ng-class="{active: isSelected(post.id)}"
                   ng-repeat="post in posts">
         <a flex="100" target="_blank" ng-click="selectPost(post.id)" href="{{ post.post_type === 'video' ? post.video_url : post.post_url }}">
             <img ng-if="post.video_thumb_url" class="post-thumbnail" ng-src="{{post.video_thumb_url}}"/>
@@ -25,6 +25,6 @@
             </div>
         </a>
     </md-list-item>
-    <md-list-item ng-if="posts.length === postsPageSize" ng-click="loadMoreBtnHandler()" class="load-more-posts">Load more posts...</md-list-item>
-    <md-list-item ng-if="posts.length < postsPageSize" class="load-more-posts"><span>Not more posts available.</span></md-list-item>
+    <md-list-item flex="100" ng-if="posts.length === postsPageSize" ng-click="loadMoreBtnHandler()" class="load-more-posts">Load more posts...</md-list-item>
+    <md-list-item flex="100" ng-if="posts.length < postsPageSize" class="load-more-posts"><span flex="100" layout-align="center center">Not more posts available.</span></md-list-item>
 </md-list>
