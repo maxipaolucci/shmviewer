@@ -18,8 +18,19 @@ if (!empty($username) && !empty($password) && !empty($email)) {
     $user->setUsername($username);
     $user->setPassword($password);
     $user->setEmail($email);
-    echo json_encode(array('post_id' => $id, 'success' => 1, 'post' => array(), 'message' => 'No post found.'));
+    
+    $user = UserTable::getInstance()->save($user);
+    if ($user->getId() > 0) {
+        $savedUser = array('id' => $user->getId(), 
+            'firstname' => $user->getFirstname(), 
+            'lastname' => $user->getLastname(), 
+            'username' => $user->getUsername(), 
+            'email' => $user->getEmail());
+        echo json_encode(array('user_id' => $user->getId(), 'status' => 'success', 'user' => $savedUser, 'message' => 'User saved successfully.'));
+    } else {
+        echo json_encode(array('status' => 'error', 'error_code' => 1005, 'message' => ErrorHandler::getInstance()->getError(ErrorHandler::$ERROR_SAVING_NEW_USER)));
+    }
 } else {
-    echo json_encode(array('post_id' => $id, 'success' => 1, 'post' => array(), 'message' => 'You must provide a post ID.'));
+    echo json_encode(array('status' => 'error', 'error_code' => 1006, 'message' => ErrorHandler::getInstance()->getError(ErrorHandler::$INCOMPLETE_NEW_USER_DATA)));
 }
 ?>

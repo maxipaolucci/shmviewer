@@ -8,6 +8,8 @@ class ErrorHandler
   public static $MYSQL_DATABASE_SELECTION_ERROR = 1002;
   public static $EMPTY_LAST_VIDEO_ID = 1003;
   public static $EMPTY_POST_UPDATE_LAST_ID = 1004;
+  public static $ERROR_SAVING_NEW_USER = 1005;
+  public static $INCOMPLETE_NEW_USER_DATA = 1006;
   
   private static $instance = null;
 
@@ -56,7 +58,15 @@ class ErrorHandler
       case self::$EMPTY_POST_UPDATE_LAST_ID:
         $message .= "lastId param is empty, must be provided.";
         break;
+    
+      case self::$ERROR_SAVING_NEW_USER:
+        $message .= "The new user could not be saved, an error occurred.";
+        break;
       
+      case self::$INCOMPLETE_NEW_USER_DATA:
+        $message .= "Username, password and email are required fields.";
+        break;
+    
       default:
         $message .= "ErrorHandler: A non identified error ocurrer.";
         break;
