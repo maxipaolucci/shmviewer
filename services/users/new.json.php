@@ -1,7 +1,7 @@
 <?php
 // THIS SERVICE INSERTS A USER INTO THE USER TABLE
 
-$path = '..';
+$path = '../..';
 include("$path/includes/ErrorHandler.class.php");
 include("$path/model.php");
 
