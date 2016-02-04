@@ -13,5 +13,3 @@ app/build
 #ignore compiled css files
 app/css/*.css
 
-#ignore connection php class
-Connection.class.php
