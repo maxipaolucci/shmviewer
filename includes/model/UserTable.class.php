@@ -92,6 +92,32 @@ class UserTable extends Table
     return $user;
   }
   
+  public function update($user) {
+      if (!empty($user)) {
+          $query = "UPDATE " . self::$TABLE . " SET "
+                  . "firstname = '" . $user->getFirstname()
+                  . "', lastname = '" . $user->getLastname()
+                  . "', password = '" . $user->getPassword()
+                  . "', email = '" . $user->getEmail()
+                  . "', admin = '" . $user->getIsAdmin()
+                  . "' WHERE id = " . $user->getId() . ";";
+        if ($user->isValid()) {
+          //check if the user already exists
+          $userByEmail = $this->getByEmail($user->getEmail());
+          if (empty($userByEmail)) {
+            parent::executeQuery($query);
+            return $user;
+          } else {
+            return ErrorHandler::$EXISTENT_EMAIL;
+          }
+        } else {
+            return ErrorHandler::$INCOMPLETE_NEW_USER_DATA;
+        }
+    }
+    //user already exists.
+    return ErrorHandler::$INCOMPLETE_NEW_USER_DATA;
+  }
+  
   /**
    * Insert a user into this Table
    * @param <User> $user
