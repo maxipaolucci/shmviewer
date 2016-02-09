@@ -88,6 +88,7 @@ class UserTable extends Table
     $user->setUsername($aRow['username']);
     $user->setPassword($aRow['password']);
     $user->setEmail($aRow['email']);
+    $user->setAdmin($aRow['admin']);
     return $user;
   }
   
@@ -104,11 +105,12 @@ class UserTable extends Table
                 lastname,
                 username,
                 password,
-                email) VALUES";
+                email,
+                admin) VALUES";
        
         if ($user->isValid()) {
           //check if the user already exists
-          $userByUsername = $this->getByUserame($user->getUsername());
+          $userByUsername = $this->getByUsername($user->getUsername());
           $userByEmail = $this->getByEmail($user->getEmail());
           if (empty($userByUsername) && empty($userByEmail)) {
             $query .= self::populateRowValuesFromObject($user) . ";";
@@ -116,17 +118,17 @@ class UserTable extends Table
             $user->setId($this->lastInsertID());
             return $user;
           } else if (!empty($userByUsername)) {
-              return 'existent-username';
+              return ErrorHandler::$EXISTENT_USERNAME;
           }
           //otherwise
-          return 'existent-email';
+          return ErrorHandler::$EXISTENT_EMAIL;
         } else {
-            return 'invalid-data';
+            return ErrorHandler::$INCOMPLETE_NEW_USER_DATA;
         }
     
     }
     //user already exists.
-    return null;
+    return ErrorHandler::$INCOMPLETE_NEW_USER_DATA;
   }
   
   /**
@@ -140,7 +142,8 @@ class UserTable extends Table
               . $object->getLastname() . "','"
               . $object->getUsername() . "','"
               . $object->getPassword() . "','"
-              . $object->getEmail() . "')";
+              . $object->getEmail() . "','"
+              . $object->isAdmin() . "')";
     return $rowValue;
   }
 }

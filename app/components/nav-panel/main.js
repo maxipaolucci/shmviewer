@@ -5,7 +5,7 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
         restrict : 'E',
         scope: true,
         templateUrl : './components/nav-panel/nav-panel.html',
-        controller : function($log, $window, $scope, $state, AppSettings, Post, SearchPost){
+        controller : function($log, $window, $scope, $state, AppSettings, Post, SearchPost, User){
             $scope.appTitle = AppSettings.title;
             $scope.showSearchForm = false;
             $scope.showSeparatorSpan = true;
@@ -34,6 +34,7 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
                 }, function (data) {
                     $log.log(data);
                 });
+                
             };
             
             /**
@@ -41,6 +42,16 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
              * @returns {undefined}
              */
             $scope.searchAction = function () {
+                User.create(null).then(function(data) {
+                    if (data) {
+                        $log.log(data);
+                    } else {
+                        $log.log(componentName + '(getRandomPost()) Cannot retrive the user data');
+                    }
+                }, function (data) {
+                    $log.log(data);
+                });
+                
                 if (!$scope.showSearchForm) {
                     $scope.showSearchForm = true;
                     if ($(window).width() > AppSettings.cssBreakpoints.screenSMmax) {

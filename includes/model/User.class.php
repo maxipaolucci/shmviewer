@@ -14,10 +14,11 @@ class User {
   
   private $id = 0;
   private $firstname = "";
-  private $Lastname = "";
-  private $Username = "";
+  private $lastname = "";
+  private $username = "";
   private $password = "";
   private $email = '';
+  private $admin = false;
   private $valid = true; //a checker that the values in each instance of this class are valid an can be stored in db
   
   public function __construct() {}
@@ -39,7 +40,7 @@ class User {
   }
   
   public function setFirstname($firstname) {
-    $this->username = $firstname;
+    $this->firstname = $firstname;
   }
   
   public function getLastname() {
@@ -47,7 +48,7 @@ class User {
   }
   
   public function setLastname($name) {
-    $this->username = $name;
+    $this->lastname = $name;
   }
   
   public function getUsername() {
@@ -84,6 +85,14 @@ class User {
     } else {
       $this->valid = false;
     }
+  }
+  
+  public function isAdmin() {
+    return $this->admin;
+  }
+
+  public function setAdmin($isAdmin) {
+    $this->admin = $isAdmin;
   }
 
 }

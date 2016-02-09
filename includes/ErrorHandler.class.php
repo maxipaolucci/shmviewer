@@ -10,6 +10,8 @@ class ErrorHandler
   public static $EMPTY_POST_UPDATE_LAST_ID = 1004;
   public static $ERROR_SAVING_NEW_USER = 1005;
   public static $INCOMPLETE_NEW_USER_DATA = 1006;
+  public static $EXISTENT_USERNAME = 1007;
+  public static $EXISTENT_EMAIL = 1008;
   
   private static $instance = null;
 
@@ -65,6 +67,14 @@ class ErrorHandler
       
       case self::$INCOMPLETE_NEW_USER_DATA:
         $message .= "Username, password and email are required fields.";
+        break;
+    
+      case self::$EXISTENT_USERNAME:
+        $message .= "That username is already in use, please try another one.";
+        break;
+      
+      case self::$EXISTENT_EMAIL:
+        $message .= "That email is already in use, please try another one.";
         break;
     
       default:

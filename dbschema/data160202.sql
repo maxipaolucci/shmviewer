@@ -40,7 +40,7 @@ insert  into `tag`(`id`,`name`,`link`) values (2173,'Andrew Mercado','http://www
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`firstname`,`lastname`,`username`,`password`,`email`) values (1,'Maxi','Paolucci','maxipaolucci','papanata','maxipaolucci@gmail.com');
+insert  into `user`(`id`,`firstname`,`lastname`,`username`,`password`,`email`,`admin`) values (1,'Maxi','Paolucci','maxipaolucci','papanata','maxipaolucci@gmail.com',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

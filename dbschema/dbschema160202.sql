@@ -104,10 +104,11 @@ CREATE TABLE `user` (
   `username` varchar(30) NOT NULL,
   `password` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_unique` (`username`),
   UNIQUE KEY `email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
