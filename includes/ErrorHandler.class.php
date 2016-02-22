@@ -12,6 +12,7 @@ class ErrorHandler
   public static $INCOMPLETE_NEW_USER_DATA = 1006;
   public static $EXISTENT_USERNAME = 1007;
   public static $EXISTENT_EMAIL = 1008;
+  public static $NON_USER_WITH_THAT_ID = 1009;
   
   private static $instance = null;
 
@@ -75,6 +76,10 @@ class ErrorHandler
       
       case self::$EXISTENT_EMAIL:
         $message .= "That email is already in use, please try another one.";
+        break;
+      
+      case self::$NON_USER_WITH_THAT_ID:
+        $message .= "There is no user with the provided ID: " . $params[0];
         break;
     
       default:

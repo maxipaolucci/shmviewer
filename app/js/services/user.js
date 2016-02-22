@@ -52,7 +52,27 @@ angular.module('shmviewer').provider('User', function UserProvider() {
                     .success(function(data){
                         deferred.resolve(data);
                     }).error(function(){
-                        deferred.reject('There was an error trying to retrieve a user by ID: ' + userId);
+                        deferred.reject('There was an error trying to retrieve create a new user');
+                    });
+                return deferred.promise;
+            },
+            
+            update : function () {
+                var userData = {
+                    firstname : 'Pepe',
+                    lastname : 'Pono',
+                    username : 'peposs',
+                    password : 'pepino',
+                    email : 'pepe@gmail.com'
+                };
+                
+                var deferred = $q.defer();
+                $http.post(AppSettings.urls.servicesServer + '/services/users/edit.json.php', 
+                        userData)
+                    .success(function(data){
+                        deferred.resolve(data);
+                    }).error(function(){
+                        deferred.reject('There was an error trying to edit an existing user.');
                     });
                 return deferred.promise;
             }

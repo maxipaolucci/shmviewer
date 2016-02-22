@@ -94,17 +94,19 @@ class UserTable extends Table
   
   public function update($user) {
       if (!empty($user)) {
-          $query = "UPDATE " . self::$TABLE . " SET "
+        if ($user->isValid()) {
+          //check if the user already exists
+          $userByEmail = $this->getByEmail($user->getEmail());
+          if (empty($userByEmail) || 
+                  (!empty($userByEmail) && $userByEmail->getId() == $user->getId())) {
+            $query = "UPDATE " . self::$TABLE . " SET "
                   . "firstname = '" . $user->getFirstname()
                   . "', lastname = '" . $user->getLastname()
                   . "', password = '" . $user->getPassword()
                   . "', email = '" . $user->getEmail()
                   . "', admin = '" . $user->getIsAdmin()
                   . "' WHERE id = " . $user->getId() . ";";
-        if ($user->isValid()) {
-          //check if the user already exists
-          $userByEmail = $this->getByEmail($user->getEmail());
-          if (empty($userByEmail)) {
+            
             parent::executeQuery($query);
             return $user;
           } else {
