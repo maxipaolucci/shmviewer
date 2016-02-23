@@ -60,10 +60,11 @@ angular.module('shmviewer').provider('User', function UserProvider() {
             update : function () {
                 var userData = {
                     firstname : 'Pepe',
-                    lastname : 'Pono',
-                    username : 'peposs',
-                    password : 'pepino',
-                    email : 'pepe@gmail.com'
+                    lastname : 'Ponomooooo',
+                    admin : false,
+                    password : 'cucumber',
+                    email : 'maxipaolucci@gmail.com',
+                    id : 4 
                 };
                 
                 var deferred = $q.defer();

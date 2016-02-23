@@ -92,6 +92,11 @@ class UserTable extends Table
     return $user;
   }
   
+  /**
+   * Updates an existent user
+   * @param <User> $user
+   * @return <User> or an error string if something goes wrong
+   */
   public function update($user) {
       if (!empty($user)) {
         if ($user->isValid()) {
@@ -104,7 +109,7 @@ class UserTable extends Table
                   . "', lastname = '" . $user->getLastname()
                   . "', password = '" . $user->getPassword()
                   . "', email = '" . $user->getEmail()
-                  . "', admin = '" . $user->getIsAdmin()
+                  . "', admin = '" . $user->isAdmin()
                   . "' WHERE id = " . $user->getId() . ";";
             
             parent::executeQuery($query);

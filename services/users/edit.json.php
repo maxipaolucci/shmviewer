@@ -15,7 +15,7 @@ $email = empty($arrayData->email) ? null : $arrayData->email;
 $admin = empty($arrayData->admin) ? false : $arrayData->admin;
 $id = empty($arrayData->id) ? null : $arrayData->id;
 
-if (!empty($id) && !empty($username) && !empty($password) && !empty($email)) {
+if (!empty($id) && !empty($password) && !empty($email)) {
     $user = UserTable::getInstance()->getById($id);
     if (!empty($user)) {
         $user->setFirstname($firstname);

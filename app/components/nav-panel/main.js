@@ -29,7 +29,7 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
                     if (data.post) {
                         $window.open(data.post.post_url);
                     } else {
-                        $log.log(componentName + '(getRandomPost()) Cannot retrive the post data');
+                        $log.log(componentName + '(randomPostAction()) Cannot retrive the post data');
                     }   
                 }, function (data) {
                     $log.log(data);
@@ -42,11 +42,11 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
              * @returns {undefined}
              */
             $scope.searchAction = function () {
-                User.create(null).then(function(data) {
+                User.update(null).then(function(data) {
                     if (data) {
                         $log.log(data);
                     } else {
-                        $log.log(componentName + '(getRandomPost()) Cannot retrive the user data');
+                        $log.log(componentName + '(searchAction()) Cannot retrive the user data');
                     }
                 }, function (data) {
                     $log.log(data);
