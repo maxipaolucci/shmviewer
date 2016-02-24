@@ -16,7 +16,7 @@ angular.module('shmviewer', ['ui.router', 'ngMaterial', 'nav-panel', 'post-list'
         };
         initialize();
     })
-    .config(function($mdThemingProvider, AppSettingsProvider) {
+    .config(function($mdThemingProvider, $mdIconProvider, AppSettingsProvider) {
         AppSettingsProvider.setServicesServer('http://www.iprsportingclub.com.ar/shmviewer');
         AppSettingsProvider.setServicesServer('http://shmviewer.localhost');
         AppSettingsProvider.setPostListPageSize(30);
