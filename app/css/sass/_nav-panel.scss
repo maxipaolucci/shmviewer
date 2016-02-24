@@ -15,9 +15,10 @@ shm-nav-panel md-toolbar {
             
             input {
                 padding: 0 10px;
-                color: $hover_post_bgcolor;
+                color: $p500;
                 background-color: #fff;
                 font-size: 11pt;
+                text-shadow: none;
             }
             
             .md-char-counter {

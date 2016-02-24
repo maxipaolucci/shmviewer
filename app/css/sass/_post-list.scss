@@ -27,7 +27,7 @@ md-list.posts md-list-item.post {
     padding: 10px;
     
     &.active {
-        background-color: $active_post_bgcolor;
+        background-color: $p300;
         
         a .post-title {
             color: $active_font_color;
@@ -39,7 +39,7 @@ md-list.posts md-list-item.post {
     }
     
     &:hover {
-        background-color: $hover_post_bgcolor;
+        background-color: $p500;
         
         a .post-title {
             color: $hover_font_color;
@@ -64,7 +64,7 @@ md-list.posts md-list-item.post {
         margin: 0 10px 5px 0;
         border-radius: 50%;
         font-size: 53pt;
-        color: $hover_post_bgcolor;
+        color: $p500;
         
         &.article {
             font-size: 45pt;
@@ -78,7 +78,7 @@ md-list.posts md-list-item.post {
         .post-title {
             font-weight: bold;
             display: block;
-            color: $hover_post_bgcolor;
+            color: $p500;
         }
     
     }

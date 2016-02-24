@@ -9,10 +9,42 @@ $screen-lg-min: 960px; //angular material
 $default_font_family: Arial;
 $default_font_color: #fff;
 $default_font_size: 9pt;
+
+//Colors
 $hover_font_color: #000;
 $active_font_color: #000;
-$hover_post_bgcolor : #FF007D;
-$active_post_bgcolor : #ea4e93;
+
+//indigo Material Palette
+$i50 : #E8EAF6;
+$i100 : #C5CAE9;
+$i200 : #9FA8DA;
+$i300 : #7986CB;
+$i400 : #5C6BC0;
+$i500 : #3F51B5;
+$i600 : #3949AB;
+$i700 : #303F9F;
+$i800 : #283593;
+$i900 : #1A237E;
+$ia100 : #8C9EFF;
+$ia200 : #536DFE;
+$ia400 : #3D5AFE;
+$ia700 : #304FFE;
+
+//Pink Material Palette
+$p50 : #FCE4EC;
+$p100 : #F8BBD0;
+$p200 : #F48FB1;
+$p300 : #F06292;
+$p400 : #EC407A;
+$p500 : #E91E63;
+$p600 : #D81B60;
+$p700 : #C2185B;
+$p800 : #AD1457;
+$p900 : #880E4F;
+$pa100 : #FF80AB;
+$pa200 : #FF4081;
+$pa400 : #F50057;
+$pa700 : #C51162;
 
 $post_height: 100%;
 $post_thumbnail_height: 90px;

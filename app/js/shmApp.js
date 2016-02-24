@@ -16,8 +16,11 @@ angular.module('shmviewer', ['ui.router', 'ngMaterial', 'nav-panel', 'post-list'
         };
         initialize();
     })
-    .config(function(AppSettingsProvider) {
+    .config(function($mdThemingProvider, AppSettingsProvider) {
         AppSettingsProvider.setServicesServer('http://www.iprsportingclub.com.ar/shmviewer');
         AppSettingsProvider.setServicesServer('http://shmviewer.localhost');
         AppSettingsProvider.setPostListPageSize(30);
+        
+        //Material theme
+        $mdThemingProvider.theme('default').primaryPalette('indigo').accentPalette('pink');
     });
