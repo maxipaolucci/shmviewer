@@ -1,4 +1,4 @@
-angular.module('post-list', ['ngFx', 'ngAnimate']).directive('shmPostList', function(){
+angular.module('post-list', []).directive('shmPostList', function(){
         var componentName = 'post-list component - shmPostList directive: ';
         
         return {

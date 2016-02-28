@@ -1,7 +1,7 @@
 /* Medium devices (tablets, 600px and up) */
 @media (min-width: $screen-md-min) { 
     
-    shm-nav-panel md-toolbar {
+    nav.navbar {
 
         .searchForm { 
             margin: 0 0 0 120px;

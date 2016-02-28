@@ -8,16 +8,14 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
         controller : function($log, $window, $scope, $state, AppSettings, Post, SearchPost, User){
             $scope.appTitle = AppSettings.title;
             $scope.showSearchForm = false;
-            $scope.showSeparatorSpan = true;
-            $scope.searchString = "";
+            $scope.searchString = '';
             
             /**
              * Closes the search input form in the navbar
              */
             $scope.closeSearchForm = function () {
                 $scope.showSearchForm = false;
-                $scope.showSeparatorSpan = true;
-                $('.searchForm .search-field').val('');
+                $scope.searchString = '';
             };
             
             /**
@@ -54,11 +52,8 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
                 
                 if (!$scope.showSearchForm) {
                     $scope.showSearchForm = true;
-                    if ($(window).width() > AppSettings.cssBreakpoints.screenSMmax) {
-                        $scope.showSeparatorSpan = false;
-                    }
-                    $('.searchForm .search-field-container').addClass('md-input-focused');
-                    $('.searchForm .search-field').focus();
+//                    $('.searchForm .search-field-container').addClass('md-input-focused');
+//                    $('.searchForm .search-field').focus();
                 } else if($scope.searchString) {
                     if ($state.is('search') && SearchPost.getSearchString() === $scope.searchString) {
                         //do nothing, the user is performing the same search again

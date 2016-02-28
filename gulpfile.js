@@ -89,6 +89,7 @@ gulp.task('ang-copy-views', function() {
  */
 gulp.task('ang-copy-css', function() {
     gulp.src('./app/css/**/*.css').pipe(gulp.dest('./app/build/css'));
+    gulp.src('./app/fonts/**/*.*').pipe(gulp.dest('./app/build/fonts'));
     return gulp.src('./app/css/font-awesome-4.3.0/fonts/*.*').pipe(gulp.dest('./app/build/css/font-awesome-4.3.0/fonts'));
 });
 

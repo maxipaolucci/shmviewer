@@ -1,10 +1,27 @@
-shm-nav-panel md-toolbar {
-    button.md-button {
-        min-width: 50px;
+nav.navbar {
+    background-color: $i500;
+    color: #fff;
+    border-radius: 0;
+    
+    .navbar-brand {
+        padding: 15px 0;
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+    
+    .icon-list {
+        list-style: none;
+        padding: 12px 0;
         
-        md-icon {
-            height: auto;
-            font-size: 15pt;
+        .icon-item {
+            float: right;
+            cursor: pointer;
+            
+            .icon {
+                font-size: 20px;
+            }
         }
     }
     
@@ -20,14 +37,6 @@ shm-nav-panel md-toolbar {
                 font-size: 11pt;
                 text-shadow: none;
             }
-            
-            .md-char-counter {
-                display : none;
-            }
-        }
-        
-        .md-button {
-            min-width: 50px;
         }
     }
 }

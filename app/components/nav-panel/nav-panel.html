@@ -1,7 +1,30 @@
-<md-toolbar md-scroll-shrink class="md-primary">
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-header col-xs-6 col-md-3">
+                <div class="navbar-brand">
+                    <a ng-click="closeSearchForm()" ui-sref="home">{{appTitle}}</a>
+                </div>
+            </div>
+            <ul class="icon-list col-xs-6">
+                <li class="icon-item col-xs-2 col-md-1">
+                    <span class="glyphicon glyphicon-menu-hamburger icon"></span>
+                </li>
+                <li class="icon-item col-xs-2 col-md-1">
+                    <span class="glyphicon glyphicon-random icon" alt="Random Post" ng-click="randomPostAction()"></span>
+                </li>
+                <li class="icon-item col-xs-2 col-md-1">
+                    <span class="glyphicon glyphicon-search icon" aria-hidden="true" ng-click="searchAction()"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--<md-toolbar md-scroll-shrink class="md-primary">
     <div class="md-toolbar-tools">
         <a ng-click="closeSearchForm()" ui-sref="home">{{appTitle}}</a>
-        <!-- fill up the space between left and right area -->
+         fill up the space between left and right area 
         <span ng-show="showSeparatorSpan" flex></span>
         
         <form flex hide-sm ng-show="showSearchForm" layout="row" class="searchForm" name="searchForm">
@@ -40,4 +63,4 @@
             </div>
         </md-input-container>
     </form>
-</md-toolbar>
+</md-toolbar>-->
