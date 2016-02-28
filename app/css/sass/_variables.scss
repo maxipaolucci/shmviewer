@@ -1,10 +1,10 @@
-// GRID SYSTEM VARIABLES
-$screen-xs-max: 399px; //not supported by angular material
-$screen-sm-min: 400px; //not supported by angular material
-$screen-sm-max: 599px; //angular material
-$screen-md-min: 600px; //angular material
-$screen-md-max: 959px; //angular material
-$screen-lg-min: 960px; //angular material
+//BOOTSTRAP GRID SYSTEM VARIABLES
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
 
 $default_font_family: Arial;
 $default_font_color: #fff;

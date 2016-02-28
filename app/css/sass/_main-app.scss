@@ -33,19 +33,34 @@ body {
 }
 
 div.views-container {
-    background: -webkit-linear-gradient($bg_color_gradient); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient($bg_color_gradient); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient($bg_color_gradient); /* For Firefox 3.6 to 15 */
-    background: linear-gradient($bg_color_gradient); /* Standard syntax */
+    background-color: #000;
     
-    md-tabs.posts-tabs-container {
-        .md-tab {
-            color: #fff;
-        }
+    .posts-tabs-container {
         
-        .md-tab.md-active {
-            color: $i200;
-            font-weight: bold;
+        .nav-tabs {
+            border: none;
+            border-bottom: 1px solid $p700;
+        }
+        .nav-tabs .uib-tab {
+            
+            a {
+                color: #fff;
+                font-size: 11pt;
+                outline: 0;
+            }
+            
+            a:hover {
+                background-color: transparent;
+                border: none;
+            }
+
+            &.active a {
+                color: $i200;
+                font-weight: bold;
+                background-color: transparent;
+                border: none;
+                border-bottom: 3px solid $p500;
+            }
         }
     }
 }

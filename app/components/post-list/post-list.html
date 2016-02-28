@@ -4,8 +4,8 @@
         <a class="col-xs-12" target="_blank" ng-click="selectPost(post.id)" href="{{ post.post_type === 'video' ? post.video_url : post.post_url }}">
             <div class="row">
                 <img ng-if="post.video_thumb_url" class="post-thumbnail" ng-src="{{post.video_thumb_url}}"/>
-                <span ng-if="!post.video_thumb_url && post.post_type === 'video'" class="post-thumbnail glyphicon glyphicon-video icon"></span>
-                <span ng-if="!post.video_thumb_url && post.post_type === 'article'" class="post-thumbnail article glyphicon glyphicon-list icon"></span>
+                <span ng-if="!post.video_thumb_url && post.post_type === 'video'" class="post-thumbnail default video glyphicon glyphicon-facetime-video icon"></span>
+                <span ng-if="!post.video_thumb_url && post.post_type === 'article'" class="post-thumbnail default article glyphicon glyphicon-list icon"></span>
                 <div class="post-title-container">
                     <span class="post-title">{{post.title}}</span>
                     <div class="post-date">

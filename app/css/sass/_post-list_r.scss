@@ -1,7 +1,10 @@
-/* Medium devices (tablets, 600px and up) */
-@media (min-width: $screen-md-min) { 
+/* Just extra small devices */
+@media (max-width: $screen-xs-max) {  }
+
+/* Small devices (768px and up) */
+@media (min-width: $screen-sm-min) { 
     
-    md-list.posts md-list-item.post {
+    ul.posts li.post {
         
         .post-title-container {    
             padding-left: $post_thumbnail_width + 10px;
@@ -9,18 +12,23 @@
         .post-thumbnail {
             width: $post_thumbnail_width;
             height: $post_thumbnail_height;
-            font-size: 72pt;
+            font-size: 50px;
             
-            &.article {
-                font-size: 60pt;
+            &.default {
+                padding: 20px;
             }
         }
     }
 }
 
-/* large devices (desktops, 960px and up) */
-@media (min-width: $screen-lg-min) {  }
-
-@media (max-width: $screen-xs-max) {  }
+/* Just small devices */
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {  }
+
+/* medium devices (992px and up) */
+@media (min-width: $screen-md-min) { }
+
+/* Just medium devices */
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {  }
+
+/* large devices (1200px and up) */
+@media (min-width: $screen-lg-min) {  }

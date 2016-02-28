@@ -1,28 +1,17 @@
-md-list.posts {
-    padding: 0;
+ul.posts {
+    padding: 0 15px;
     
-    md-list-item.load-more-posts {
+    .load-more-posts {
         cursor: pointer;
         font-size: 12pt;
         list-style-type: none;
         padding: 10px;
         text-align: center;
         border-top: 1px solid;
-        
-        button.md-button {
-            background-color: transparent;
-            
-            &:hover {
-                background-color: transparent;
-            }
-            .md-list-item-inner {
-                justify-content: center;
-            }
-        }
     }
 }
 
-md-list.posts md-list-item.post {
+ul.posts li.post {
     list-style-type: none;
     padding: 10px;
     
@@ -63,11 +52,11 @@ md-list.posts md-list-item.post {
         float: left;
         margin: 0 10px 5px 0;
         border-radius: 50%;
-        font-size: 53pt;
+        font-size: 40px;
         color: $p500;
-        
-        &.article {
-            font-size: 45pt;
+            
+        &.default {
+            padding: 12px;
         }
     }
     
