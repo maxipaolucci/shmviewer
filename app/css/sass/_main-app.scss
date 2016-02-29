@@ -30,10 +30,44 @@ body {
     font-family: $default_font_family;
     font-size: $default_font_size;
     color: $default_font_color;
+    background-color: #000;
+    padding-top: 60px;
+    
+    &.double-padding-top {
+        padding-top: 110px;
+    }
+}
+
+a {
+    outline: 0;
+}
+
+.fab-icon {
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    background-color: $p500;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    padding:15px 17px;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition: transform .4s ease-in-out;
+    
+    &:hover {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        background-color: $pa400;
+    }
+}
+
+.fab-icon-primary {
+    color: #fff;
+    background-color: $p500;
 }
 
 div.views-container {
-    background-color: #000;
     
     .posts-tabs-container {
         
@@ -62,25 +96,5 @@ div.views-container {
                 border-bottom: 3px solid $p500;
             }
         }
-    }
-}
-
-.fab-icon {
-    cursor: pointer;
-    color: #fff;
-    font-size: 24px;
-    background-color: $p500;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    padding:15px 17px;
-    -webkit-transition: -webkit-transform .8s ease-in-out;
-    transition: transform .4s ease-in-out;
-    
-    &:hover {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-        background-color: $pa400;
     }
 }

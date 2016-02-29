@@ -1,0 +1,21 @@
+/* Just extra small devices */
+@media (max-width: $screen-xs-max) {  }
+
+/* Small devices (768px and up) */
+@media (min-width: $screen-sm-min) { 
+    body.double-padding-top {
+        padding-top: 60px;
+    }
+}
+
+/* Just small devices */
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {  }
+
+/* medium devices (992px and up) */
+@media (min-width: $screen-md-min) { }
+
+/* Just medium devices */
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {  }
+
+/* large devices (1200px and up) */
+@media (min-width: $screen-lg-min) {  }

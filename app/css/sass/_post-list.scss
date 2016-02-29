@@ -3,8 +3,13 @@ ul.posts {
     
     .load-more-posts {
         list-style-type: none;
-        padding: 10px;
+        padding: 10px 10px 25px;
         text-align: center;
+        
+        .load-more-icon {
+            position: absolute;
+            top: -38px;
+        }
     }
 }
 
@@ -41,6 +46,7 @@ ul.posts li.post {
         height: $post_height;
         display: block;
         color: $default_font_color;
+        outline: 0;
     }
     
     .post-thumbnail {
@@ -92,4 +98,3 @@ ul.posts li.post {
         
     }
 }
-

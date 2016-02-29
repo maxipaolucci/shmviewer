@@ -1,4 +1,4 @@
-<nav class="navbar container-fluid">
+<nav class="navbar navbar-fixed-top container-fluid">
     <div class="row">
         <!--        HEADER -->
         <div class="navbar-header col-xs-6 col-sm-3">
@@ -19,14 +19,9 @@
         </ul>
         
         <!--        SEARCH FORM-->
-        <form ng-show="showSearchForm" class="searchForm col-xs-12 col-sm-6 col-md-7" name="searchForm">
+        <form ng-show="showSearchForm" class="search-form col-xs-12 col-sm-6 col-md-7" name="searchForm">
             <div class="form-group">
-                <input type="text" class="form-control search-field" name="search" placeholder="Search by...">
-                <div ng-messages="searchForm.search.$error" ng-show="search.$dirty">
-                  <div ng-message="required">This is required!</div>
-                  <div ng-message="maxlength">That's too long!</div>
-                  <div ng-message="minlength">That's too short!</div>
-                </div>
+                <input type="text" class="form-control search-input" name="searchInputField" placeholder="Search by..." ng-model="searchString">
             </div>
         </form>
         

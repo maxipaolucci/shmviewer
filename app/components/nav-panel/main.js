@@ -1,11 +1,11 @@
-angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
+angular.module('nav-panel', []).directive('shmNavPanel', function($state, $log, $window, AppSettings, Post, SearchPost, User){
     var componentName = 'nav-panel component - shmNavPanel directive: ';
     
     return {
         restrict : 'E',
         scope: true,
         templateUrl : './components/nav-panel/nav-panel.html',
-        controller : function($log, $window, $scope, $state, AppSettings, Post, SearchPost, User){
+        controller : function($scope){
             $scope.appTitle = AppSettings.title;
             $scope.showSearchForm = false;
             $scope.searchString = '';
@@ -16,6 +16,7 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
             $scope.closeSearchForm = function () {
                 $scope.showSearchForm = false;
                 $scope.searchString = '';
+                $('body').removeClass('double-padding-top');
             };
             
             /**
@@ -35,35 +36,7 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
                 
             };
             
-            /**
-             * Executes the search action
-             * @returns {undefined}
-             */
-            $scope.searchAction = function () {
-                User.update(null).then(function(data) {
-                    if (data) {
-                        $log.log(data);
-                    } else {
-                        $log.log(componentName + '(searchAction()) Cannot retrive the user data');
-                    }
-                }, function (data) {
-                    $log.log(data);
-                });
-                
-                if (!$scope.showSearchForm) {
-                    $scope.showSearchForm = true;
-//                    $('.searchForm .search-field-container').addClass('md-input-focused');
-//                    $('.searchForm .search-field').focus();
-                } else if($scope.searchString) {
-                    if ($state.is('search') && SearchPost.getSearchString() === $scope.searchString) {
-                        //do nothing, the user is performing the same search again
-                    } else {
-                        //the user performed a different search so go ahead
-                        SearchPost.setSearchString($scope.searchString);
-                        $state.go('search', {}, {reload: true}); //second parameter is for $stateParams
-                    }
-                }
-            };
+            
 
             /**
              * Initialize the controller logic
@@ -71,6 +44,36 @@ angular.module('nav-panel', ['ngMessages']).directive('shmNavPanel', function(){
             var initialize = function () {};
             initialize();
         },
-        controllerAs : 'navPanelCtrl'
+        
+        link : function (scope, element, attrs) {
+            /**
+             * Executes the search action
+             * @returns {undefined}
+             */
+            scope.searchAction = function () {
+//                User.update(null).then(function(data) {
+//                    if (data) {
+//                        $log.log(data);
+//                    } else {
+//                        $log.log(componentName + '(searchAction()) Cannot retrive the user data');
+//                    }
+//                }, function (data) {
+//                    $log.log(data);
+//                });
+                
+                if (!scope.showSearchForm) {
+                    scope.showSearchForm = true;
+                    $('body').addClass('double-padding-top');
+                } else if(scope.searchString) {
+                    if ($state.is('search') && SearchPost.getSearchString() === scope.searchString) {
+                        //do nothing, the user is performing the same search again
+                    } else {
+                        //the user performed a different search so go ahead
+                        SearchPost.setSearchString(scope.searchString);
+                        $state.go('search', {}, {reload: true}); //second parameter is for $stateParams
+                    }
+                }
+            };
+        }
     };
 });
