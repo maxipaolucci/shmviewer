@@ -21,7 +21,8 @@
         <!--        SEARCH FORM-->
         <form ng-show="showSearchForm" class="search-form col-xs-12 col-sm-6 col-md-7" name="searchForm">
             <div class="form-group">
-                <input type="text" class="form-control search-input" name="searchInputField" placeholder="Search by..." ng-model="searchString">
+                <input type="text" class="form-control search-input" name="searchInputField" placeholder="Search by..." 
+                       ng-keypress="($event.which === 13) ? searchAction() : 0" ng-model="searchString">
             </div>
         </form>
         
