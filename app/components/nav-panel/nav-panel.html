@@ -7,8 +7,14 @@
         
         <!--        ICON LIST-->
         <ul class="icon-list">
-            <li class="icon-item">
-                <span class="glyphicon glyphicon-menu-hamburger icon" title="Menu"></span>
+            <li class="icon-item" uib-dropdown is-open="status.isopen" keyboard-nav="true">
+                <span uib-dropdown-toggle id="menu-button" class="glyphicon glyphicon-menu-hamburger icon" title="Menu"></span>
+                <ul class="main-menu" uib-dropdown-menu role="menu" aria-labelledby="menu-button">
+                    <li role="menuitem"><a href="#">Sign up free</a></li>
+                    <li role="menuitem"><a href="#">Login</a></li>
+                    <li class="divider"></li>
+                    <li role="menuitem"><a href="#">Separated link</a></li>
+                </ul>
             </li>
             <li class="icon-item">
                 <span class="glyphicon glyphicon-random icon" title="Random Post" ng-click="randomPostAction()"></span>

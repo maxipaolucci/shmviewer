@@ -33,6 +33,22 @@ nav.navbar {
         }
     }
     
+    .icon-list .icon-item.dropdown {
+        
+        .main-menu {
+            right: 31%;
+            left: auto;
+        }
+        
+        &.open .main-menu {
+            animation: scaleUp 0.5s both ease-in; z-index: 8888; 
+        }
+        
+        
+        
+    }
+    
+    
     .search-form { 
         padding: 12px 0;
         float: right;

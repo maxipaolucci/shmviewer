@@ -36,6 +36,7 @@ angular.module('nav-panel', []).directive('shmNavPanel', function($state, $log, 
                 });
                 
             };
+            
             /**
              * Executes the search action
              * @returns {undefined}
