@@ -6,6 +6,9 @@ $screen-md-min: 992px;
 $screen-md-max: 1199px;
 $screen-lg-min: 1200px;
 
+/*//SPECIAL BREAKPOINTS (NOT STANDARD)
+$screen-min-400: 400px;*/
+
 $default_font_family: Arial;
 $default_font_color: #fff;
 $default_font_size: 9pt;
@@ -14,23 +17,7 @@ $default_font_size: 9pt;
 $hover_font_color: #000;
 $active_font_color: #000;
 
-//indigo Material Palette
-$i50 : #E8EAF6;
-$i100 : #C5CAE9;
-$i200 : #9FA8DA;
-$i300 : #7986CB;
-$i400 : #5C6BC0;
-$i500 : #3F51B5;
-$i600 : #3949AB;
-$i700 : #303F9F;
-$i800 : #283593;
-$i900 : #1A237E;
-$ia100 : #8C9EFF;
-$ia200 : #536DFE;
-$ia400 : #3D5AFE;
-$ia700 : #304FFE;
-
-//Pink Material Palette
+//Primary Material Palette (pink)
 $p50 : #FCE4EC;
 $p100 : #F8BBD0;
 $p200 : #F48FB1;
@@ -45,6 +32,22 @@ $pa100 : #FF80AB;
 $pa200 : #FF4081;
 $pa400 : #F50057;
 $pa700 : #C51162;
+
+//Secondary Material Palette (indigo)
+$s50 : #E8EAF6;
+$s100 : #C5CAE9;
+$s200 : #9FA8DA;
+$s300 : #7986CB;
+$s400 : #5C6BC0;
+$s500 : #3F51B5;
+$s600 : #3949AB;
+$s700 : #303F9F;
+$s800 : #283593;
+$s900 : #1A237E;
+$sa100 : #8C9EFF;
+$sa200 : #536DFE;
+$sa400 : #3D5AFE;
+$sa700 : #304FFE;
 
 $post_height: 100%;
 $post_thumbnail_height: 90px;

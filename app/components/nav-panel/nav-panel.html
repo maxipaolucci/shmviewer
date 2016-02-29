@@ -1,66 +1,34 @@
-<nav class="navbar">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-header col-xs-6 col-md-3">
-                <div class="navbar-brand">
-                    <a ng-click="closeSearchForm()" ui-sref="home">{{appTitle}}</a>
-                </div>
-            </div>
-            <ul class="icon-list col-xs-6">
-                <li class="icon-item col-xs-2 col-md-1">
-                    <span class="glyphicon glyphicon-menu-hamburger icon"></span>
-                </li>
-                <li class="icon-item col-xs-2 col-md-1">
-                    <span class="glyphicon glyphicon-random icon" alt="Random Post" ng-click="randomPostAction()"></span>
-                </li>
-                <li class="icon-item col-xs-2 col-md-1">
-                    <span class="glyphicon glyphicon-search icon" aria-hidden="true" ng-click="searchAction()"></span>
-                </li>
-            </ul>
+<nav class="navbar container-fluid">
+    <div class="row">
+        <!--        HEADER -->
+        <div class="navbar-header col-xs-6 col-sm-3">
+            <a ng-click="closeSearchForm()" ui-sref="home">{{appTitle}}</a>
         </div>
-    </div>
-</nav>
-
-<!--<md-toolbar md-scroll-shrink class="md-primary">
-    <div class="md-toolbar-tools">
-        <a ng-click="closeSearchForm()" ui-sref="home">{{appTitle}}</a>
-         fill up the space between left and right area 
-        <span ng-show="showSeparatorSpan" flex></span>
         
-        <form flex hide-sm ng-show="showSearchForm" layout="row" class="searchForm" name="searchForm">
-            <md-input-container flex="100" class="search-field-container no-padding">
-                <input class="search-field" name="search" ng-model="searchString" 
-                      ng-keypress="($event.which === 13) ? searchAction() : 0" 
-                      md-maxlength="100">
+        <!--        ICON LIST-->
+        <ul class="icon-list">
+            <li class="icon-item">
+                <span class="glyphicon glyphicon-menu-hamburger icon" title="Menu"></span>
+            </li>
+            <li class="icon-item">
+                <span class="glyphicon glyphicon-random icon" title="Random Post" ng-click="randomPostAction()"></span>
+            </li>
+            <li class="icon-item">
+                <span class="glyphicon glyphicon-search icon" title="Search Posts..." aria-hidden="true" ng-click="searchAction()"></span>
+            </li>
+        </ul>
+        
+        <!--        SEARCH FORM-->
+        <form ng-show="showSearchForm" class="searchForm col-xs-12 col-sm-6 col-md-7" name="searchForm">
+            <div class="form-group">
+                <input type="text" class="form-control search-field" name="search" placeholder="Search by...">
                 <div ng-messages="searchForm.search.$error" ng-show="search.$dirty">
                   <div ng-message="required">This is required!</div>
-                  <div ng-message="md-maxlength">That's too long!</div>
+                  <div ng-message="maxlength">That's too long!</div>
                   <div ng-message="minlength">That's too short!</div>
                 </div>
-            </md-input-container>
+            </div>
         </form>
         
-        <md-button aria-label="Search post" class="no-margin" ng-click="searchAction()">
-            <md-icon md-font-icon="fa-search" class="fa" alt="Search post"></md-icon>
-        </md-button>
-        <md-button aria-label="Random post" class="no-margin" ng-click="randomPostAction()">
-            <md-icon md-font-icon="fa-cube" class="fa" alt="Random Post"></md-icon>    
-        </md-button>
-        <md-button aria-label="Home" class="no-margin" ng-click="">
-           <md-icon md-font-icon="fa-bars" class="fa" alt="Random Post"></md-icon>
-        </md-button>
     </div>
-    
-    <form hide-gt-sm ng-show="showSearchForm" layout="row" class="searchForm" name="searchForm">
-        <md-input-container flex="100" class="search-field-container no-padding">
-            <input class="search-field" name="search" ng-model="searchString" 
-                  ng-keypress="($event.which === 13) ? searchAction() : 0" 
-                  md-maxlength="100">
-            <div ng-messages="pepe.search.$error" ng-show="search.$dirty">
-              <div ng-message="required">This is required!</div>
-              <div ng-message="md-maxlength">That's too long!</div>
-              <div ng-message="minlength">That's too short!</div>
-            </div>
-        </md-input-container>
-    </form>
-</md-toolbar>-->
+</nav>

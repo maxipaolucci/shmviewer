@@ -27,10 +27,9 @@
             </div>
         </a>
     </li>
-    <li ng-if="posts.length === postsPageSize" ng-click="loadMoreBtnHandler()" class="row load-more-posts">
-        <span class="col-xs-12 ">Load more posts...</span>
-    </li>
-    <li ng-if="posts.length < postsPageSize" class="row load-more-posts">
-        <span class="col-xs-12 ">Not more posts available.</span>
+    <li ng-if="loadMorePostsBtnVisible" class="row load-more-posts">
+        <div class="col-xs-12 ">
+            <span ng-click="loadMoreBtnHandler()" class="glyphicon glyphicon-plus fab-icon" title="Load more posts"></span>
+        </div>
     </li>
 </ul>

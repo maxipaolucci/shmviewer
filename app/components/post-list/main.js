@@ -9,6 +9,7 @@ angular.module('post-list', []).directive('shmPostList', function(){
                 var selectedPostId = null;
                 var lastPostsPageLoaded = 0;
                 
+                $scope.loadMorePostsBtnVisible = true;
                 $scope.postsPageSize = AppSettings.listPageSizes.posts;
                 $scope.posts = [];
                 
@@ -42,6 +43,9 @@ angular.module('post-list', []).directive('shmPostList', function(){
                         Post.getPosts($scope.posttype, pageNum).then(function(data) {
                             if (data.posts) {
                                 $scope.posts = $scope.posts.concat(data.posts.slice(0, AppSettings.listPageSizes.posts));
+                                if (data.posts.length < AppSettings.listPageSizes.posts) {
+                                    $scope.loadMorePostsBtnVisible = false;
+                                }
                             } else {
                                 $log.log(componentName + '(loadMorePosts()) Cannot retrive the posts data');
                             }

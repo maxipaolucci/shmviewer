@@ -1,12 +1,14 @@
 nav.navbar {
-    background-color: $i500;
+    background-color: $s500;
     color: #fff;
     border-radius: 0;
     margin-bottom: 0;
     
-    .navbar-brand {
-        padding: 15px 0;
+    .navbar-header {
+        padding: 15px 0 15px 15px;
+        
         a {
+            font-size: 15pt;
             color: #fff;
             text-decoration: none;
         }
@@ -14,11 +16,15 @@ nav.navbar {
     
     .icon-list {
         list-style: none;
-        padding: 12px 0;
+        padding: 17px 0;
+        width: 145px;
+        float: right;
         
         .icon-item {
             float: right;
             cursor: pointer;
+            width: 45px;
+            padding: 0 10px;
             
             .icon {
                 font-size: 20px;
@@ -27,17 +33,17 @@ nav.navbar {
     }
     
     .searchForm { 
-        margin: 0 16px 10px;
+        padding: 12px 0;
+        float: right;
         
-        .search-field-container {
-            
-            input {
-                padding: 0 10px;
-                color: $p500;
-                background-color: #fff;
-                font-size: 11pt;
-                text-shadow: none;
-            }
+        .form-group {
+            margin-bottom: 0;
+        }
+        
+        input {
+            color: $p500;
+            background-color: #fff;
+            font-size: 11pt;
         }
     }
 }
