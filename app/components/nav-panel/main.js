@@ -5,24 +5,25 @@ angular.module('nav-panel', []).directive('shmNavPanel', function($state, $log, 
         restrict : 'E',
         scope: true,
         templateUrl : './components/nav-panel/nav-panel.html',
-        controller : function($scope){
-            $scope.appTitle = AppSettings.title;
-            $scope.showSearchForm = false;
-            $scope.searchString = '';
+        
+        link : function (scope, element, attrs) {
+            scope.appTitle = AppSettings.title;
+            scope.showSearchForm = false;
+            scope.searchString = '';
             
             /**
              * Closes the search input form in the navbar
              */
-            $scope.closeSearchForm = function () {
-                $scope.showSearchForm = false;
-                $scope.searchString = '';
+            scope.closeSearchForm = function () {
+                scope.showSearchForm = false;
+                scope.searchString = '';
                 $('body').removeClass('double-padding-top');
             };
             
             /**
              * Get a random post from the server.
              */
-            $scope.randomPostAction = function () {
+            scope.randomPostAction = function () {
                 //lets use -1 to tell the server that we want a random post
                 Post.getPostById(-1).then(function(data) {
                     if (data.post) {
@@ -35,17 +36,6 @@ angular.module('nav-panel', []).directive('shmNavPanel', function($state, $log, 
                 });
                 
             };
-            
-            
-
-            /**
-             * Initialize the controller logic
-             */
-            var initialize = function () {};
-            initialize();
-        },
-        
-        link : function (scope, element, attrs) {
             /**
              * Executes the search action
              * @returns {undefined}

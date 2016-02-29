@@ -86,7 +86,6 @@ angular.module('post-list', []).directive('shmPostList', function(){
                 };
                 
                 initialize();
-            },
-            controllerAs : 'postlistCtrl'
+            }
         };
     });
